@@ -1,0 +1,176 @@
+<div class="slideout-content">
+  <div class="modalsd modal-slide-in sdfade app-group-management-modal" id="modals-slide-in">
+    <div class="modal-dialog" style="width: 700px">
+      <div class="modal-content p-0">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="toggleSidebar('app-group-management')">
+          ×
+        </button>
+
+        <div class="modal-header mb-1">
+          <h5 class="modal-title">
+            <span class="align-middle"> {{ headerTitle }}</span>
+          </h5>
+        </div>
+
+        <div class="modal-body flex-grow-1">
+          <div class="content-wrapper container-xxl p-0">
+            <div class="content-body">
+              <!-- content-header component -->
+
+              <div class="row">
+                <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <app-content-header
+                    [contentHeader]="contentHeader"
+                  ></app-content-header>
+                </div> -->
+              </div>
+
+              <!-- content-header component -->
+
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <!-- Kitchen Sink Datatables -->
+                  <section id="ngx-datatable-kitchen-sink">
+                    <h4 class="card-title">
+                      <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                          <div class="
+                              custom-control custom-switch custom-switch-danger
+                            ">
+                            <input type="checkbox" (change)="checkactive($event)" class="custom-control-input"
+                              id="customSwitch12" />
+                            <label class="custom-control-label" for="customSwitch12">
+                            </label>
+                            <label for="customSwitch12">แสดงรายการยกเลิกใช้งาน</label>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                          <button type="button" class="btn btn-gradient-success pull-right"
+                            (click)="modalOpenPrimary(modalPrimary)" rippleEffect>
+                            เพิ่มกลุ่มวัสดุ
+                          </button>
+
+                          <!-- Button trigger modal -->
+                        </div>
+                      </div>
+                    </h4>
+
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex">
+                        <div class="
+                            d-flex
+                            align-items-center
+                            justify-content-end
+                            pr-1
+                            pb-1
+                            pl-1 pl-md-0
+                            pb-md-0
+                          ">
+                          <label class="d-flex align-items-center">Search<input type="search" placeholder="Search"
+                              class="form-control ml-25" (keyup)="filterUpdate($event)" /></label>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="
+                            d-flex
+                            justify-content-between
+                            align-items-center
+                            m-1
+                            pull-right
+                          ">
+                          <label class="d-flex align-items-center">Show
+                            <select class="form-control mx-25" [(ngModel)]="basicSelectedOption">
+                              <option value="10">10</option>
+                              <option value="25">25</option>
+                              <option value="50">50</option>
+                              <option value="100">100</option>
+                            </select>
+                            entries</label>
+                        </div>
+                      </div>
+                    </div>
+                    <ngx-datatable [rows]="kitchenSinkRows" [rowHeight]="58" class="bootstrap core-bootstrap"
+                      [limit]="10" [columnMode]="ColumnMode.force" [headerHeight]="40" [footerHeight]="50"
+                      [scrollbarH]="true" [selectionType]="SelectionType.cell" [limit]="basicSelectedOption"
+                      (activate)="onActivate($event)" (select)="onSelect($event)" (click)="singleClick($event)">
+                      <ngx-datatable-column [width]="50" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                        [resizeable]="false">
+                        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value"
+                          let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
+                          <!-- <div class="custom-control custom-checkbox">
+                             <input
+                              type="checkbox"
+                              class="custom-control-input"
+                              [checked]="isSelected"
+                              (change)="onCheckboxChangeFn($event)"
+                              id="rowChkbxRef{{ rowIndex }}"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="rowChkbxRef{{ rowIndex }}"
+                            >{{ rowIndex }}</label> 
+                          </div> -->
+                          <label class="text-center" for="rowChkbxRef{{ rowIndex }}">{{rowIndex + 1}}</label>
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column name="รหัสกลุ่ม" prop="groupcode" [width]="150">
+                      </ngx-datatable-column>
+                      <ngx-datatable-column name="ชื่อกลุ่ม" prop="groupname" [width]="200"></ngx-datatable-column>
+
+                      <ngx-datatable-column name="Status" prop="active" [width]="120">
+                        <ng-template let-status="value" ngx-datatable-cell-template>
+                          <div class="badge badge-pill" [ngClass]="{
+                              'badge-light-primary': status == '1',
+                              'badge-light-success': status == '2',
+                              'badge-light-danger': status == '3',
+                              'badge-light-warning': status == '4',
+                              'badge-light-info': status == '5'
+                            }">
+                            {{
+                            status == 1
+                            ? "Current"
+                            : status == 2
+                            ? "Professional"
+                            : status == 3
+                            ? "Rejected"
+                            : status == 4
+                            ? "Resigned"
+                            : status == 5
+                            ? "Applied"
+                            : "Applied"
+                            }}
+                          </div>
+                        </ng-template>
+                      </ngx-datatable-column>
+                    </ngx-datatable>
+                  </section>
+                  <!--/ Kitchen Sink Datatables -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-primary d-inline-block">
+  <!-- Modal -->
+  <ng-template #modalPrimary let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title" id="myModalLabel160">Group Modal</h5>
+      <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+      <app-create-group></app-create-group>
+    </div>
+    <!-- <div class="modal-footer">
+    
+    </div> -->
+  </ng-template>
+  <!-- / Modal -->
+</div>

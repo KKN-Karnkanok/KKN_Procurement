@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KKN.VP.API", "KKN.VP.API\KKN.VP.API.csproj", "{80DC8FC9-5C70-4F68-9559-B9A421BB91F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KKN.VP.Web", "KKN.VP.Web\KKN.VP.Web.csproj", "{39019B50-2B51-425C-AE4E-83B5FAB955AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KKN.Core", "KKN.Core\KKN.Core.csproj", "{46C4CEA9-0931-46C8-8A22-A298C413B77F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKN.Dao", "KKN.Dao\KKN.Dao.csproj", "{14BD1E59-ED30-49DF-981D-BC281B0087AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKN.Model", "KKN.Model\KKN.Model.csproj", "{3DB0FA53-5F85-4654-BC25-8EA5CD4FCE9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKN.Service", "KKN.Service\KKN.Service.csproj", "{1A7D50E0-ABA2-4816-B3F7-7E3E37C87BBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80DC8FC9-5C70-4F68-9559-B9A421BB91F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80DC8FC9-5C70-4F68-9559-B9A421BB91F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80DC8FC9-5C70-4F68-9559-B9A421BB91F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80DC8FC9-5C70-4F68-9559-B9A421BB91F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39019B50-2B51-425C-AE4E-83B5FAB955AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39019B50-2B51-425C-AE4E-83B5FAB955AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39019B50-2B51-425C-AE4E-83B5FAB955AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39019B50-2B51-425C-AE4E-83B5FAB955AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46C4CEA9-0931-46C8-8A22-A298C413B77F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C4CEA9-0931-46C8-8A22-A298C413B77F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C4CEA9-0931-46C8-8A22-A298C413B77F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C4CEA9-0931-46C8-8A22-A298C413B77F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14BD1E59-ED30-49DF-981D-BC281B0087AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14BD1E59-ED30-49DF-981D-BC281B0087AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14BD1E59-ED30-49DF-981D-BC281B0087AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14BD1E59-ED30-49DF-981D-BC281B0087AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DB0FA53-5F85-4654-BC25-8EA5CD4FCE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DB0FA53-5F85-4654-BC25-8EA5CD4FCE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DB0FA53-5F85-4654-BC25-8EA5CD4FCE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DB0FA53-5F85-4654-BC25-8EA5CD4FCE9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A7D50E0-ABA2-4816-B3F7-7E3E37C87BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A7D50E0-ABA2-4816-B3F7-7E3E37C87BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A7D50E0-ABA2-4816-B3F7-7E3E37C87BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A7D50E0-ABA2-4816-B3F7-7E3E37C87BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {103B3CDD-2B12-47F5-B676-6E1B8FF9590E}
+	EndGlobalSection
+EndGlobal

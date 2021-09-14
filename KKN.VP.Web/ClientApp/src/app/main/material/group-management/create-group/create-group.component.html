@@ -1,0 +1,143 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <!-- content-header component -->
+
+    <!-- <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <app-content-header
+          [contentHeader]="contentHeader"
+        ></app-content-header>
+      </div>
+    </div> -->
+
+    <!-- content-header component -->
+
+    <section id="create-material">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="card">
+            <div class="card-header">สร้างกลุ่ม</div>
+            <div class="card-body pb-1">
+              <form class="form form-horizontal">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div
+                        class="col-sm-3 col-md-4 text-sm-right col-form-label"
+                      >
+                        <label for="groupCode">รหัสกลุ่ม</label>
+                      </div>
+                      <!-- <div class="col-sm-8 col-md-5 col-lg-4"> -->
+                      <div class="col-sm-8 col-md-7 col-lg-7">
+                        <input
+                          type="text"
+                          id="groupCode"
+                          class="form-control"
+                          name="gcode"
+                          placeholder="รหัสกลุ่ม"
+                          [(ngModel)]="groupcodeinput"
+                          #newItem
+                        />
+                      </div>
+                    </div>
+                    <p class="text-center">{{ groupcodeinput }}</p>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div
+                        class="col-sm-3 col-md-4 text-sm-right col-form-label"
+                      >
+                        <label for="groupName">ชื่อกลุ่ม</label>
+                      </div>
+                      <!-- <div class="col-sm-8 col-md-5 col-lg-4"> -->
+                        <div class="col-sm-8 col-md-7 col-lg-7">
+                        <input
+                          type="text"
+                          id="groupName"
+                          class="form-control"
+                          name="gname"
+                          placeholder="ชื่อกลุ่ม"
+                          [(ngModel)]="groupnameinput"
+                          #newName
+                        />
+                      </div>
+                    </div>
+                    <p class="text-center">{{ groupnameinput }}</p>
+                  </div>
+
+                  <div class="col-sm-12 offset-sm-4">
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="checkactive"
+                        />
+                        <label class="custom-control-label" for="checkactive"
+                          >สถานะการใช้งาน</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="row col-sm-12 col-md-11 col-lg-9 justify-content-end"
+                  >
+                    <button
+                      (click)="addItem(newItem.value, newName.value)"
+                      rippleEffect
+                      class="btn btn-primary mr-1"
+                    >
+                      <span [data-feather]="'check'" [class]="'mr-25'"></span>
+                      สร้าง
+                    </button>
+                    <button
+                      type="reset"
+                      rippleEffect
+                      class="btn btn-outline-secondary"
+                    >
+                      <span [data-feather]="'x'" [class]="'mr-25'"></span> กลับ
+                    </button>
+                  </div>
+                  <!-- <p class="text-center">{{groupdate|json}}</p> -->
+                </div>
+              </form>
+
+
+<!-- 
+
+              <input type="text" class="text" #edittt />
+              <button (click)="editdata(edittt.value)">eedit</button>
+
+              <ul>
+                <li *ngFor="let item of items">{{ item | json }}</li>
+              </ul>
+
+              ---------------------------------------
+              <ul>
+                <li
+                  *ngFor="let item of items; index as i"
+                  [attr.date-index]="i"
+                  (click)="lirow(i, item)"
+                >
+                  {{ item.newItem }} ----- {{ item.newName }}
+                  <button (click)="deldetjson(i)">delete</button>
+                </li>
+              </ul>
+
+              <table>
+                <tr *ngFor="let item of items">
+                  <td [width]="50">{{ item.newItem }}</td>
+                  <td [width]="50">{{ item.newName }}</td>
+                </tr>
+              </table> -->
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

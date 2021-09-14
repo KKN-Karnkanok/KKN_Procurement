@@ -1,0 +1,913 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+    <!-- Basic Alerts start -->
+    <section id="home-page">
+      <div class="row">
+        <div class="col-sm-8 col-12">
+          <div class="card">
+            <!-- <div class="card-header"  >
+              <h4 class="card-title">วัสดุ</h4>
+            </div> -->
+            <h4
+              class="mt-2 ml-2 mb-0"
+              style="display: block; border-bottom: 1px dashed"
+            >
+              วัสดุ
+            </h4>
+            <!-- <hr /> -->
+            <div class="card-body pb-1 margin-top-0">
+              <form class="form form-horizontal">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label text-sm-right">
+                        <label>รหัสวัสดุ</label>
+                      </div>
+                      <div class="col-sm-5 ppd">
+                        <input
+                          type="text"
+                          id="item_no"
+                          class="form-control"
+                          name="item_no"
+                          placeholder="รหัสวัสดุ"
+                          [(ngModel)]="material.item_no"
+                        />
+                        <!-- <input
+                        type="text"
+                        id="item_no"
+                        class="form-control"
+                        name="item_no"
+                        placeholder="รหัสวัสดุ"
+                        [(ngModel)]="material.item_id"
+            *ngFor="let item of itemlist"
+                          [value]="item.item_id"
+                      /> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label text-sm-right">
+                        <label>ชื่อวัสดุ</label>
+                      </div>
+                      <div class="col-sm-5 ppd">
+                        <input
+                          type="text"
+                          id="item_name"
+                          class="form-control"
+                          name="item_name"
+                          placeholder="ชื่อวัสดุ"
+                          [(ngModel)]="material.item_name"
+                        />
+
+                        <!-- <input
+                        type="text"
+                        id="item_name"
+                        class="form-control"
+                        name="item_name"
+                        placeholder="ชื่อวัสดุ"
+                        [(ngModel)]="material.item_no"\
+                            *ngFor="let item of itemlist"
+                          [value]="item.item_name"
+                      /> -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label text-sm-right">
+                        <label>กลุ่มวัสดุ</label>
+                      </div>
+                      <div class="col-sm-5 ppd">
+                        <select class="form-control" [value]="3" id="group">
+                          <!-- <select class="form-control"  id="group"> -->
+
+                          <!-- <option disabled="" value="0">เลือกกลุ่มวัสดุ</option> -->
+                          <!-- <option disabled="" value="0" selected="">
+                            เลือกกลุ่มวัสดุ
+                          </option> -->
+                          <option value="1">Concrete</option>
+                          <option value="2">Steel</option>
+                          <option value="3">Wood</option>
+                          <option value="4">Electrical</option>
+                          <option value="5">Sanitary</option>
+                          <option value="6">Colour/Paint</option>
+                          <option value="7">Tools</option>
+                          <option value="8">ของแถม</option>
+                          <option value="9">ไอเทมรวม</option>
+                          <option value="18">ของใหม่</option>
+                          <option value="32">ทดสอบ active</option>
+                          <option value="43">xd</option>
+                          <option value="44">A1T</option>
+                          <option value="45">sd1</option>
+                          <option value="46">md</option>
+                          <option value="47">md2</option>
+                          <option value="48">ฟฟฟasdgsdfgsdfg</option>
+                          <option value="61">11qaszsdsd</option>
+                          <option value="62">ccvbbnvbvv</option>
+                          <option value="63">sdfvvvv</option>
+                        </select>
+                      </div>
+                      <button
+                        type="button"
+                        class="btn btn-icon btn-success"
+                        data-toggle="modal"
+                        data-target="#app-group-management"
+                        (click)="toggleSidebar('app-group-management')"
+                        rippleEffect
+                      >
+                        <span [data-feather]="'plus'"></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label text-sm-right">
+                        <label>ประเภทวัสดุ</label>
+                      </div>
+                      <div class="col-sm-5 pr-0">
+                        <select class="form-control" [value]="2" id="category">
+                          <option
+                            disabled=""
+                            value="0"
+                            id="dontcate"
+                            style="display: none"
+                          >
+                            เลือกประเภทวัสดุ
+                          </option>
+                          <!-- <option
+                            disabled=""
+                            value="0"
+                            id="dontcate"
+                            selected=""
+                            style="display: none"
+                          >
+                            เลือกประเภทวัสดุ
+                          </option> -->
+                          <option value="1" id="1">ปูนมิกซ์</option>
+                          <option value="2" id="1">ปูนถง</option>
+                          <option value="3" id="1">เคมีภัณฑ์</option>
+                          <option value="4" id="2">เหล็กเส้น</option>
+                          <option value="5" id="2">เหล็กรูปพรรณ</option>
+                          <option value="6" id="2">ตะแกรงเหล็ก</option>
+                          <option value="7" id="3">ไม้ห้องซาวน่า</option>
+                          <option value="8" id="4">สายไฟ/ระบบไฟฟ้า</option>
+                          <option value="9" id="4">อุปกรณ์ไฟฟ้า</option>
+                          <option value="10" id="4">ดวงโคม / หลอดไฟ</option>
+                          <option value="11" id="5">สุขภัณฑ์</option>
+                          <option value="12" id="5">ท่อPVC</option>
+                          <option value="13" id="6">ถังสี</option>
+                          <option value="14" id="6">อุปกรณ์ทาสี</option>
+                          <option value="15" id="7">เครื่องมือช่าง</option>
+                          <option value="16" id="7">อุปกรณ์สำรวจ</option>
+                          <option value="33" id="32">C ทดสอบac</option>
+                          <option value="34" id="0">asdfasdf</option>
+                          <option value="35" id="32">asdfasdf</option>
+                          <option value="36" id="8">vvvvv</option>
+                          <option value="37" id="6">eefghjfghjfghj</option>
+                          <option value="38" id="6">
+                            eejfghjfghjfghjfghjfghj
+                          </option>
+                          <option value="39" id="43">abc</option>
+                          <option value="40" id="43">abc</option>
+                          <option value="41" id="0">fgkjh</option>
+                          <option value="42" id="1">ผปแอ</option>
+                          <option value="43" id="43">abc</option>
+                          <option value="44" id="6">ee</option>
+                          <option value="45" id="43">abc1</option>
+                          <option value="46" id="0">abc3</option>
+                          <option value="47" id="32">asdf</option>
+                          <option value="48" id="3">aaabbbsss</option>
+                        </select>
+                      </div>
+                      <button
+                        type="button"
+                        class="btn btn-icon btn-success"
+                        data-toggle="modal"
+                        data-target="#app-category-management"
+                        (click)="toggleSidebar('app-category-management')"
+                        rippleEffect
+                      >
+                        <span [data-feather]="'plus'"></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label text-sm-right">
+                        <label>บัญชี</label>
+                      </div>
+                      <div class="col-sm-5 ppd">
+                        <select
+                          class="form-control"
+                          [value]="2"
+                          id="material_account"
+                        >
+                          <option disabled="" value="0" selected="">
+                            เลือกบัญชีวัสดุ
+                          </option>
+                          <option value="1">1000-00 สินทรัพย์</option>
+                          <option value="2">1100-00 สินทรัพย์หมุนเวียน</option>
+                          <option value="3">
+                            1110-00 เงินสดและเงินฝากธนาคาร
+                          </option>
+                          <option value="4">1111-00 เงินสด</option>
+                          <option value="5">1111-01 เงินสดระหว่างทาง</option>
+                          <option value="6">1111-02 เงินสดย่อย</option>
+                          <option value="7">1112-00 เงินฝากกระแสรายวัน</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label text-sm-right">
+                        <label>วิธีคิดต้นทุนวัสดุ</label>
+                      </div>
+                      <div class="col-sm-5 ppd">
+                        <select
+                          class="form-control"
+                          id="costing_method_material"
+                          [value]="2"
+                        >
+                          <!-- <select
+                        class="form-control"
+                        id="costing_method_material"
+                        [(ngModel)]="material.costing_method_id"
+                      > -->
+                          <option disabled="" value="0" selected="">
+                            เลือกวิธีคิดต้นทุนวัสดุ
+                          </option>
+                          <option value="1">FIFO</option>
+                          <option value="2">Average</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-9 offset-sm-3">
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="stock_count"
+                        />
+                        <!-- <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="stock_count"
+                        [(ngModel)]="material.stock_count"
+                      /> -->
+                        <label class="custom-control-label" for="customCheck1"
+                          >วัสดุนับสต๊อก</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-9 offset-sm-3">
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="overdraw_stock"
+                        />
+                        <!-- 
+                        <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="overdraw_stock"
+                        [(ngModel)]="material.overdraw_stock"
+                      /> -->
+                        <label class="custom-control-label" for="customCheck1"
+                          >ให้เบิกเกินสต๊อกได้</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-9 offset-sm-3">
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="active"
+                        />
+                        <!-- <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="active"
+                        [(ngModel)]="material.active"
+                      /> -->
+                        <label class="custom-control-label" for="customCheck1"
+                          >ใช้งานวัสดุ</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Basic Date Picker -->
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label text-sm-right">
+                        <label>วันหมดอายุ</label>
+                      </div>
+                      <div class="col-sm-5 ppd">
+                        <div class="input-group">
+                          <input
+                            class="form-control"
+                            placeholder="yyyy-mm-dd"
+                            name="expiry-Date"
+                            [(ngModel)]="basicDPdata"
+                            ngbDatepicker
+                            #basicDP="ngbDatepicker"
+                          />
+                          <div class="input-group-append">
+                            <button
+                              class="
+                                btn btn-outline-secondary
+                                feather
+                                icon-calendar
+                              "
+                              (click)="basicDP.toggle()"
+                              type="button"
+                              rippleEffect
+                            ></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--/ Basic Date Picker -->
+                </div>
+              </form>
+            </div>
+
+
+            <h4
+            class="mt-0 ml-2 mb-0 "
+            style="display: block; border-bottom: 1px dashed"
+          >
+          รายละเอียดวัสดุ
+          </h4>
+
+
+            <!-- <div class="card-header">
+              <h4 class="card-title">รายละเอียดวัสดุ</h4>
+            </div>
+            <hr /> -->
+            <div class="card-body pb-1">
+              <div class="form-group row">
+                <label
+                  class="col-md-2 col-form-label text-md-right"
+                  for="brand-column"
+                  >ยี่ห้อ</label
+                >
+                <div class="col-md-4 col-12">
+                  <input
+                    type="text"
+                    id="brand-column"
+                    class="form-control"
+                    placeholder="ยี่ห้อ"
+                    name="brand-column"
+                    [(ngModel)]="material.brand"
+                  />
+                </div>
+                <label
+                  class="col-md-2 col-form-label text-md-right"
+                  for="version-column"
+                  >รุ่น</label
+                >
+                <div class="col-md-4 col-12">
+                  <input
+                    type="text"
+                    id="version-column"
+                    class="form-control"
+                    placeholder="รุ่น"
+                    name="version-column"
+                    [(ngModel)]="material.version"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label
+                  class="col-md-2 col-form-label text-md-right"
+                  for="color-column"
+                  >สี</label
+                >
+
+                <div class="col-md-4 col-12">
+                  <input
+                    type="text"
+                    id="color-column"
+                    class="form-control"
+                    placeholder="สี"
+                    name="color-column"
+                    [(ngModel)]="material.color"
+                  />
+                </div>
+                <label
+                  class="col-md-2 col-form-label text-md-right"
+                  for="size-floating"
+                  >ขนาด</label
+                >
+                <div class="col-md-4 col-12">
+                  <input
+                    type="text"
+                    id="size-floating"
+                    class="form-control"
+                    name="size-floating"
+                    placeholder="ขนาด"
+                    [(ngModel)]="material.size"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label
+                  class="col-md-2 col-form-label text-md-right"
+                  for="basicTextarea"
+                  >ข้อมูลจำเพาะ</label
+                >
+                <div class="col-md-10 col-12">
+                  <fieldset class="form-group">
+                    <textarea
+                      class="form-control"
+                      id="description"
+                      rows="2"
+                      placeholder="ข้อมูลจำเพาะ"
+                      [(ngModel)]="material.description"
+                    ></textarea>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4 col-12">
+          <div class="card">
+
+            <h4
+            class="mt-2 ml-2 mb-0"
+            style="display: block; border-bottom: 1px dashed"
+          >
+          หน่วยวัสดุ
+          </h4>
+
+            <!-- <div class="card-header">
+              <h4 class="card-title">หน่วยวัสดุ</h4>
+            
+            </div> -->
+            <!-- <hr class="mt-0" /> -->
+
+
+            <div class="">
+              <button
+              type="button"
+              class="btn btn-success btn-sm mt-1 mb-0 mr-3 pull-right"
+              rippleEffect
+            >
+              เพิ่มหน่วย
+            </button>
+            </div>
+
+            
+            <div class="card-body pb-1 mt-0">
+              <div class="col-12">
+                <div class="form-group row">
+                  <div class="col-sm-3 col-form-label">
+                    <label>หน่วยซื้อ</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <select
+                      class="form-control"
+                      id="uom_in"
+                      [(ngModel)]="material.uom_in"
+                    >
+                      <option disabled="" value="0" selected="">
+                        เลือกหน่วยซื้อ
+                      </option>
+                      <option value="1">ลัง</option>
+                      <option value="2">กล่อง</option>
+                      <option value="3">ชิ้น</option>
+                      <option value="4">คัน</option>
+                      <option value="5">เครื่อง</option>
+                      <option value="6">เมตร</option>
+                      <option value="7">เล่ม</option>
+                      <option value="8">เส้น</option>
+                      <option value="9">แท่ง</option>
+                      <option value="10">แผ่น</option>
+                      <option value="11">ใบ</option>
+                      <option value="12">ถุง</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group row">
+                  <div class="col-sm-3 col-form-label">
+                    <label>หน่วยเก็บ</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <select
+                      class="form-control"
+                      id="uom_stock"
+                      [(ngModel)]="material.uom_stock"
+                    >
+                      <option disabled="" value="0" selected="">
+                        เลือกหน่วยซื้อ
+                      </option>
+                      <option value="1">ลัง</option>
+                      <option value="2">กล่อง</option>
+                      <option value="3">ชิ้น</option>
+                      <option value="4">คัน</option>
+                      <option value="5">เครื่อง</option>
+                      <option value="6">เมตร</option>
+                      <option value="7">เล่ม</option>
+                      <option value="8">เส้น</option>
+                      <option value="9">แท่ง</option>
+                      <option value="10">แผ่น</option>
+                      <option value="11">ใบ</option>
+                      <option value="12">ถุง</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="row"> -->
+              <div class="form-group"></div>
+              <!-- </div> -->
+
+              <div class="row">
+                <div class="col-md-3 col-3">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      id="qty-in-column"
+                      class="form-control"
+                      placeholder="หน่วยซื้อ"
+                      name="qty-in--column"
+                      [(ngModel)]="material.qty_in"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-2 col-2">
+                  <label for="qty-in-column">หน่วย</label>
+                </div>
+
+                <div class="col-md-1 col-1">
+                  <p style="color: blue; margin-top: 7px; margin-left: 5px">
+                    &#9868;
+                  </p>
+                </div>
+
+                <div class="col-md-3 col-3">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      id="qty-stock-column"
+                      class="form-control"
+                      placeholder="หน่วยเก็บ"
+                      name="qty-stock-column"
+                      [(ngModel)]="material.qty_stock"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-2 col-2">
+                  <div class="form-group">
+                    <label for="qty-stock-column">หน่วย</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-header">
+              <h4 class="card-title">รูปภาพ</h4>
+            </div>
+            <div class="card-body pb-1">
+              <div class="row">
+                <img
+                  class="img-fluid pull-right ml-5"
+                  style="height: 70px; margin-bottom: 5px; margin-right: 5px"
+                  src="../../../../assets/images/photo.jpg"
+                />
+                <div
+                  class="col-md-12 pull-right"
+                  *ngFor="let url of imageurls; let i = index"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-icon btn-warning pull-right"
+                    style="margin-top: auto"
+                    rippleEffect
+                    (click)="removeImage(i)"
+                  >
+                    <span [data-feather]="'trash'"></span>
+                  </button>
+
+                  <img
+                    class="img-fluid pull-right"
+                    style="height: 70px; margin-bottom: 5px; margin-right: 5px"
+                    [src]="url"
+                  />
+                  <span></span>
+                </div>
+              </div>
+              <!--  -->
+              <!-- <fieldset class="form-group">
+                <label for="file-upload-multiple">Multiple:</label>
+                <div class="custom-file">
+                  <input
+                    type="file"
+                    class="custom-file-input"
+                    type="file"
+                    ng2FileSelect
+                    [uploader]="uploader"
+                    multiple
+                    id="file-upload-multiple"
+                  />
+                  <label class="custom-file-label">Choose file</label>
+                </div>
+              </fieldset> -->
+
+              <fieldset class="form-group">
+                <label for="file-upload-multiple">Multiple:111111</label>
+                <div class="custom-file">
+                  <input
+                    type="file"
+                    class="custom-file-input"
+                    (change)="onSelectFile($event)"
+                    multiple
+                    id="file-upload-multiple"
+                  />
+                  <label class="custom-file-label">Choose file</label>
+                </div>
+              </fieldset>
+
+              <!-- <button (click)="urllog()">sho url</button> -->
+              <!--   accept="image/*" -->
+            </div>
+          </div>
+<div class="pull-right">
+  <button type="button" rippleEffect class="btn btn-primary mr-1">
+    Submit
+  </button>
+  <button type="reset" rippleEffect class="btn btn-outline-secondary">
+    Reset
+  </button>
+</div>
+         
+        </div>
+      </div>
+    </section>
+    <!-- Basic Alerts end -->
+  </div>
+
+
+
+
+
+  <!-- Add Payment Sidebar -->
+  <core-sidebar
+    class="modal modal-slide-in sidebar-todo-modal fade"
+    name="app-group-management"
+    overlayClass="modal-backdrop"
+    hideOnEsc="true"
+  >
+    <app-group-management></app-group-management>
+  </core-sidebar>
+  <!--/  Add Payment Sidebar -->
+
+   <!-- Add Payment Sidebar -->
+   <core-sidebar
+   class="modal modal-slide-in sidebar-todo-modal fade"
+   name="app-category-management"
+   overlayClass="modal-backdrop"
+   hideOnEsc="true"
+ >
+   <app-category-management></app-category-management>
+ </core-sidebar>
+ <!--/  Add Payment Sidebar -->
+
+
+
+
+</div>
+
+<!-- Vertical Wizard -->
+<!-- <section class="vertical-wizard">
+      <div id="stepper2" class="bs-stepper vertical vertical-wizard-example">
+        <div class="bs-stepper-header">
+          <div class="step" data-target="#account-details-vertical">
+            <button type="button" class="step-trigger">
+              <span class="bs-stepper-box">1</span>
+              <span class="bs-stepper-label">
+                <span class="bs-stepper-title">วัสดุ</span>
+                <span class="bs-stepper-subtitle">Setup Account Details</span>
+              </span>
+            </button>
+          </div>
+          <div class="step" data-target="#personal-info-vertical">
+            <button type="button" class="step-trigger">
+              <span class="bs-stepper-box">2</span>
+              <span class="bs-stepper-label">
+                <span class="bs-stepper-title">รายละเอียดวัสดุ</span>
+                <span class="bs-stepper-subtitle">Add Personal Info</span>
+              </span>
+            </button>
+          </div>
+          <div class="step" data-target="#address-step-vertical">
+            <button type="button" class="step-trigger">
+              <span class="bs-stepper-box">3</span>
+              <span class="bs-stepper-label">
+                <span class="bs-stepper-title">หน่วยวัสดุ</span>
+                <span class="bs-stepper-subtitle">Add Address</span>
+              </span>
+            </button>
+          </div>
+          <div class="step" data-target="#social-links-vertical">
+            <button type="button" class="step-trigger">
+              <span class="bs-stepper-box">4</span>
+              <span class="bs-stepper-label">
+                <span class="bs-stepper-title">รูปวัสดุ</span>
+                <span class="bs-stepper-subtitle">Add Social Links</span>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div class="bs-stepper-content">
+          <div id="account-details-vertical" class="content">
+            <div class="content-header">
+              <h5 class="mb-0">วัสดุ</h5>
+              <small class="text-muted">Enter Your Account Details.</small>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label class="form-label" for="vertical-username">รหัสวัสดุ</label>
+                <input type="text" id="vertical-username" class="form-control" placeholder="รหัสวัสดุ" />
+              </div>
+              <div class="form-group col-md-6">
+                <label class="form-label" for="vertical-email">ชื่อวัสดุ</label>
+                <input
+                  type="email"
+                  id="vertical-email"
+                  class="form-control"
+                  placeholder="ชื่อวัสดุ"
+                  aria-label="john.doe"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label class="form-label" for="vertical-username">กลุ่มวัสดุ</label>
+                <ng-select [items]="selectBasic" bindLabel="name"> </ng-select>
+              </div>
+              <div class="form-group col-md-6">
+                <label class="form-label" for="vertical-email">ประเภทวัสดุ</label>
+                <ng-select [items]="selectBasic" bindLabel="name"> </ng-select>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-outline-secondary btn-prev" disabled rippleEffect>
+                <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+                <span class="align-middle d-sm-inline-block d-none">Previous</span>
+              </button>
+              <button class="btn btn-primary btn-next" (click)="verticalWizardNext()" rippleEffect>
+                <span class="align-middle d-sm-inline-block d-none">Next</span>
+                <i data-feather="arrow-right" class="align-middle ml-sm-25 ml-0"></i>
+              </button>
+            </div>
+          </div>
+          <div id="personal-info-vertical" class="content">
+            <div class="content-header">
+              <h5 class="mb-0">Personal Info</h5>
+              <small>Enter Your Personal Info.</small>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label class="form-label" for="vertical-first-name">First Name</label>
+                <input type="text" id="vertical-first-name" class="form-control" placeholder="John" />
+              </div>
+              <div class="form-group col-md-6">
+                <label class="form-label" for="vertical-last-name">Last Name</label>
+                <input type="text" id="vertical-last-name" class="form-control" placeholder="Doe" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label class="form-label" for="vertical-country">Country</label>
+                <ng-select [items]="selectBasic" bindLabel="name"> </ng-select>
+              </div>
+              <div class="form-group col-md-6">
+                <label class="form-label" for="vertical-language">Language</label>
+                <ng-select
+                  [items]="selectMulti"
+                  [multiple]="true"
+                  [closeOnSelect]="false"
+                  [searchable]="false"
+                  bindLabel="name"
+                  name="selectLanguage"
+                  placeholder="Select people"
+                  [(ngModel)]="selectMultiSelected"
+                >
+                </ng-select>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-primary btn-prev" (click)="verticalWizardPrevious()" rippleEffect>
+                <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+                <span class="align-middle d-sm-inline-block d-none">Previous</span>
+              </button>
+              <button class="btn btn-primary btn-next" (click)="verticalWizardNext()" rippleEffect>
+                <span class="align-middle d-sm-inline-block d-none">Next</span>
+                <i data-feather="arrow-right" class="align-middle ml-sm-25 ml-0"></i>
+              </button>
+            </div>
+          </div>
+          <div id="address-step-vertical" class="content">
+            <div class="content-header">
+              <h5 class="mb-0">Address</h5>
+              <small>Enter Your Address.</small>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label class="form-label" for="vertical-address">Address</label>
+                <input
+                  type="text"
+                  id="vertical-address"
+                  class="form-control"
+                  placeholder="98  Borough bridge Road, Birmingham"
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label class="form-label" for="vertical-landmark">Landmark</label>
+                <input type="text" id="vertical-landmark" class="form-control" placeholder="Borough bridge" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label class="form-label" for="pincode2">Pincode</label>
+                <input type="text" id="pincode2" class="form-control" placeholder="658921" />
+              </div>
+              <div class="form-group col-md-6">
+                <label class="form-label" for="city2">City</label>
+                <input type="text" id="city2" class="form-control" placeholder="Birmingham" />
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-primary btn-prev" (click)="verticalWizardPrevious()" rippleEffect>
+                <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+                <span class="align-middle d-sm-inline-block d-none">Previous</span>
+              </button>
+              <button class="btn btn-primary btn-next" (click)="verticalWizardNext()" rippleEffect>
+                <span class="align-middle d-sm-inline-block d-none">Next</span>
+                <i data-feather="arrow-right" class="align-middle ml-sm-25 ml-0"></i>
+              </button>
+            </div>
+          </div>
+          <div id="social-links-vertical" class="content">
+            <div class="content-header">
+              <h5 class="mb-0">Social Links</h5>
+              <small>Enter Your Social Links.</small>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label class="form-label" for="vertical-twitter">Twitter</label>
+                <input type="text" id="vertical-twitter" class="form-control" placeholder="https://twitter.com/abc" />
+              </div>
+              <div class="form-group col-md-6">
+                <label class="form-label" for="vertical-facebook">Facebook</label>
+                <input type="text" id="vertical-facebook" class="form-control" placeholder="https://facebook.com/abc" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label class="form-label" for="vertical-google">Google+</label>
+                <input
+                  type="text"
+                  id="vertical-google"
+                  class="form-control"
+                  placeholder="https://plus.google.com/abc"
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label class="form-label" for="vertical-linkedin">Linkedin</label>
+                <input type="text" id="vertical-linkedin" class="form-control" placeholder="https://linkedin.com/abc" />
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-primary btn-prev" (click)="verticalWizardPrevious()" rippleEffect>
+                <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+                <span class="align-middle d-sm-inline-block d-none">Previous</span>
+              </button>
+              <button class="btn btn-success btn-submit" rippleEffect (click)="onSubmit()">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+<!-- /Vertical Wizard -->
