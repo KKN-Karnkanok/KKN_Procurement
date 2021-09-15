@@ -35,6 +35,16 @@
           >
             จัดการประเภท
           </button>
+          <button
+          type="button"
+          class="btn btn-secondary"
+          data-toggle="modal"
+          data-target="#app-uom-management"
+          (click)="toggleSidebar('app-uom-management')"
+          rippleEffect
+        >
+          จัดการหน่วยวัสดุ
+        </button>
           <button type="button" class="btn btn-secondary" rippleEffect>
             จัดการวัสดุ
           </button>
@@ -144,7 +154,7 @@
           <button type="button" class="btn btn-gradient-primary">Search</button>
         </div>
 
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-12">
           <button
             type="button"
             class="btn btn-gradient-success pull-right"
@@ -230,6 +240,8 @@
 
                   <th >#</th>
                   <th >รหัส</th>
+                  <th >กลุ่ม</th>
+                  <th >ประเภท</th>
                   <th >รายการวัสดุ</th>
                   <th >สถานะ</th>
                 </tr>
@@ -244,13 +256,17 @@
                     <span class="font-weight-bold">{{ item.item_no }}</span>
                   </td>
 
+                  <td >{{ item.group_id }}  </td>
+                  <td >{{ item.category_id }}  </td>
+
                   <td >{{ item.item_name }} {{ item.version }} {{ item.size }} {{ item.brand }} {{ item.color }} </td>
                   
       
                   
                   <td >
+                    
                     <span class="badge badge-pill badge-light-success mr-1"
-                      >Active</span
+                      >ใช้งาน</span
                     >
                   </td>
                 </tr>
@@ -308,6 +324,8 @@
   </core-sidebar>
   <!--/  Add Payment Sidebar -->
 
+
+
    <!-- Add Payment Sidebar -->
    <core-sidebar
    class="modal modal-slide-in sidebar-todo-modal fade"
@@ -316,6 +334,18 @@
    hideOnEsc="true"
  >
    <app-category-management></app-category-management>
+ </core-sidebar>
+ <!--/  Add Payment Sidebar -->
+
+   
+   <!-- Add Payment Sidebar -->
+   <core-sidebar
+   class="modal modal-slide-in sidebar-todo-modal fade"
+   name="app-uom-management"
+   overlayClass="modal-backdrop"
+   hideOnEsc="true"
+ >
+   <app-uom-management></app-uom-management>
  </core-sidebar>
  <!--/  Add Payment Sidebar -->
 

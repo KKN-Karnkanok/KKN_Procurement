@@ -2,11 +2,11 @@ import { NgIf } from "@angular/common";
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: "app-create-group",
-  templateUrl: "./create-group.component.html",
-  styleUrls: ["./create-group.component.scss"],
+  selector: 'app-create-uom',
+  templateUrl: './create-uom.component.html',
+  styleUrls: ['./create-uom.component.scss']
 })
-export class CreateGroupComponent implements OnInit {
+export class CreateUomComponent implements OnInit {
   @Output() newItemEvent = new EventEmitter<string>();
 titlename = "สร้างกลุ่ม";
   addNewItem(value: string) {
@@ -26,9 +26,6 @@ titlename = "สร้างกลุ่ม";
     this.items.push({ newItem, newName });
     console.log("complete ", this.items);
   }
-  // save(){
-  //   http.post('https:kkn.co.th/api/material/bindSvave')
-  // }
 
   deldetjson(row) {
     console.log("deldetjson", row);

@@ -1,1 +1,173 @@
-<p>create-category works!</p>
+<div class="content-wrapper container-xxl p-0" >
+    <div class="content-body">
+      <!-- content-header component -->
+  
+      <!-- <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <app-content-header
+            [contentHeader]="contentHeader"
+          ></app-content-header>
+        </div>
+      </div> -->
+  
+      <!-- content-header component -->
+  
+      <section id="create-material">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+              <!-- <div class="card-header">สร้างกลุ่ม</div> -->
+              <div class="card-body pb-1 mb-0">
+                <form class="form form-horizontal">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group row">
+                        <div
+                          class="col-sm-3 col-md-4 text-sm-right col-form-label"
+                        >
+                          <label for="groupCode">รหัสประเภท</label>
+                        </div>
+                        <!-- <div class="col-sm-8 col-md-5 col-lg-4"> -->
+                        <div class="col-sm-8 col-md-7 col-lg-7">
+                          <input
+                            type="text"
+                            id="groupCode"
+                            class="form-control"
+                            name="gcode"
+                            placeholder="รหัสประเภท"
+                            
+                            #newItem
+                          />
+                        </div>
+                      </div>
+                      <p class="text-center"></p>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group row">
+                        <div
+                          class="col-sm-3 col-md-4 text-sm-right col-form-label"
+                        >
+                          <label for="groupName">กลุ่มวัสดุ</label>
+                        </div>
+                        <!-- <div class="col-sm-8 col-md-5 col-lg-4"> -->
+                          <div class="col-sm-8 col-md-7 col-lg-7">
+                            <select class="form-control" id="group">
+                              <!-- <select class="form-control"  id="group"> -->
+    
+                              <!-- <option disabled="" value="0">เลือกกลุ่มวัสดุ</option> -->
+                              <option disabled="" value="0" selected="">
+                                เลือกกลุ่มวัสดุ
+                              </option>
+                              <option value="1">Concrete</option>
+                              <option value="2">Steel</option>
+                              <option value="3">Wood</option>
+                              <option value="4">Electrical</option>
+                              <option value="5">Sanitary</option>
+                              <option value="6">Colour/Paint</option>
+                              <option value="7">Tools</option>
+                              <option value="8">ของแถม</option>
+                              <option value="9">ไอเทมรวม</option>
+                              <option value="18">ของใหม่</option>
+                              <option value="32">ทดสอบ active</option>
+                              <option value="43">xd</option>
+                              <option value="44">A1T</option>
+                              <option value="45">sd1</option>
+                              <option value="46">md</option>
+                              <option value="47">md2</option>
+                              <option value="48">ฟฟฟasdgsdfgsdfg</option>
+                              <option value="61">11qaszsdsd</option>
+                              <option value="62">ccvbbnvbvv</option>
+                              <option value="63">sdfvvvv</option>
+                            </select>
+                        </div>
+                      </div>
+                      <p class="text-center"></p>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-group row">
+                        <div
+                          class="col-sm-3 col-md-4 text-sm-right col-form-label"
+                        >
+                          <label for="groupName">ชื่อประเภท</label>
+                        </div>
+                        <!-- <div class="col-sm-8 col-md-5 col-lg-4"> -->
+                          <div class="col-sm-8 col-md-7 col-lg-7">
+                          <input
+                            type="text"
+                            id="groupName"
+                            class="form-control"
+                            name="gname"
+                            placeholder="ชื่อประเภท"
+                            
+                            #newName
+                          />
+                        </div>
+                      </div>
+                      <p class="text-center"></p>
+                    </div>
+  
+                    <div class="col-sm-8 offset-sm-4">
+                      <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                          <input
+                            type="checkbox"
+                            class="custom-control-input"
+                            id="checkactive"
+                          />
+                          <label class="custom-control-label"  for="checkactive"
+                            >สถานะการใช้งาน</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+                
+                  </div>
+                </form>
+  
+  
+  <!-- 
+                <input type="text" class="text" #edittt />
+                <button (click)="editdata(edittt.value)">eedit</button>
+  
+                <ul>
+                  <li *ngFor="let item of items">{{ item | json }}</li>
+                </ul>
+  
+                ---------------------------------------
+                <ul>
+                  <li
+                    *ngFor="let item of items; index as i"
+                    [attr.date-index]="i"
+                    (click)="lirow(i, item)"
+                  >
+                    {{ item.newItem }} ----- {{ item.newName }}
+                    <button (click)="deldetjson(i)">delete</button>
+                  </li>
+                </ul>
+  
+                <table>
+                  <tr *ngFor="let item of items">
+                    <td [width]="50">{{ item.newItem }}</td>
+                    <td [width]="50">{{ item.newName }}</td>
+                  </tr>
+                </table> -->
+  
+  
+  
+              </div>
+              <!-- <div class="card-footer pt-1 pb-1">
+                <div
+                class="row col-sm-12 col-md-12 col-lg-12 justify-content-end "
+              >
+     
+              </div>
+            </div> -->
+          </div>
+          <!-- <p class="text-center">{{groupdate|json}}</p> -->
+        </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  

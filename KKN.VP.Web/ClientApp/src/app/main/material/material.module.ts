@@ -1,7 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes,Resolve } from "@angular/router";
+import { NgxMaskModule } from 'ngx-mask';
 
 import { NgSelectModule } from "@ng-select/ng-select";
 import { CoreSidebarModule } from '@core/components';
@@ -14,6 +15,9 @@ import { TranslateModule } from "@ngx-translate/core";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { DatatablesService } from "./datatables.service";
 import { Ng2FlatpickrModule } from 'ng2-flatpickr';
+import { FileUploadModule } from "ng2-file-upload";
+import { CorePipesModule } from "@core/pipes/pipes.module";
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 ////////Component/////////
 import { MaterialComponent } from "./material.component";
 import { GroupManagementComponent } from "./group-management/group-management.component";
@@ -21,8 +25,9 @@ import { CategoryManagementComponent } from "./category-management/category-mana
 import { CreateMaterialComponent } from "./create-material/create-material.component";
 import { CreateGroupComponent } from "./group-management/create-group/create-group.component";
 import { CreateCategoryComponent } from "./category-management/create-category/create-category.component";
-import { FileUploadModule } from "ng2-file-upload";
-import { CorePipesModule } from "@core/pipes/pipes.module";
+
+import { UomManagementComponent } from './uom-management/uom-management.component';
+import { CreateUomComponent } from './uom-management/create-uom/create-uom.component';
 ////////Component/////////
 
 const routes: Routes = [
@@ -75,7 +80,9 @@ const routes: Routes = [
     CoreSidebarModule,
     CorePipesModule,
     Ng2FlatpickrModule,
-    
+    SweetAlert2Module.forRoot(),
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
 
   ],
   declarations: [
@@ -85,6 +92,8 @@ const routes: Routes = [
     CreateMaterialComponent,
     CreateGroupComponent,
     CreateCategoryComponent,
+    UomManagementComponent,
+    CreateUomComponent,
   ],
   exports: [
     MaterialComponent,

@@ -1,19 +1,20 @@
 <div class="content-wrapper container-xxl p-0">
   <div class="content-body">
+
+
     <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+
 
     <!-- Basic Alerts start -->
     <section id="home-page">
       <div class="row">
-        <div class="col-sm-8 col-12">
+        <div class="col-xl-8 col-12">
           <div class="card">
             <!-- <div class="card-header"  >
               <h4 class="card-title">วัสดุ</h4>
             </div> -->
-            <h4
-              class="mt-2 ml-2 mb-0"
-              style="display: block; border-bottom: 1px dashed"
-            >
+            <h4 class="mt-2 ml-2 mb-0" style="display: block; border-bottom: 1px dashed">
               วัสดุ
             </h4>
             <!-- <hr /> -->
@@ -23,17 +24,11 @@
                   <div class="col-12">
                     <div class="form-group row">
                       <div class="col-sm-3 col-form-label text-sm-right">
-                        <label>รหัสวัสดุ</label>
+                        <label>รหัสวัสดุ</label><span style="color:red; ">*</span>
                       </div>
                       <div class="col-sm-5 ppd">
-                        <input
-                          type="text"
-                          id="item_no"
-                          class="form-control"
-                          name="item_no"
-                          placeholder="รหัสวัสดุ"
-                          [(ngModel)]="material.item_no"
-                        />
+                        <input type="text" id="item_no" class="form-control" name="item_no" placeholder="รหัสวัสดุ"
+                          [(ngModel)]="material.item_no" />
                         <!-- <input
                         type="text"
                         id="item_no"
@@ -50,17 +45,11 @@
                   <div class="col-12">
                     <div class="form-group row">
                       <div class="col-sm-3 col-form-label text-sm-right">
-                        <label>ชื่อวัสดุ</label>
+                        <label>ชื่อวัสดุ</label><span style="color:red; ">*</span>
                       </div>
                       <div class="col-sm-5 ppd">
-                        <input
-                          type="text"
-                          id="item_name"
-                          class="form-control"
-                          name="item_name"
-                          placeholder="ชื่อวัสดุ"
-                          [(ngModel)]="material.item_name"
-                        />
+                        <input type="text" id="item_name" class="form-control" name="item_name" placeholder="ชื่อวัสดุ"
+                          [(ngModel)]="material.item_name" />
 
                         <!-- <input
                         type="text"
@@ -79,7 +68,7 @@
                   <div class="col-12">
                     <div class="form-group row">
                       <div class="col-sm-3 col-form-label text-sm-right">
-                        <label>กลุ่มวัสดุ</label>
+                        <label>กลุ่มวัสดุ</label><span style="color:red; ">*</span>
                       </div>
                       <div class="col-sm-5 ppd">
                         <select class="form-control" [value]="3" id="group">
@@ -111,14 +100,9 @@
                           <option value="63">sdfvvvv</option>
                         </select>
                       </div>
-                      <button
-                        type="button"
-                        class="btn btn-icon btn-success"
-                        data-toggle="modal"
-                        data-target="#app-group-management"
-                        (click)="toggleSidebar('app-group-management')"
-                        rippleEffect
-                      >
+                      <button type="button" class="btn btn-icon btn-success" data-toggle="modal"
+                        data-target="#app-group-management" (click)="toggleSidebar('app-group-management')"
+                        rippleEffect>
                         <span [data-feather]="'plus'"></span>
                       </button>
                     </div>
@@ -126,16 +110,11 @@
                   <div class="col-12">
                     <div class="form-group row">
                       <div class="col-sm-3 col-form-label text-sm-right">
-                        <label>ประเภทวัสดุ</label>
+                        <label>ประเภทวัสดุ</label><span style="color:red; ">*</span>
                       </div>
                       <div class="col-sm-5 pr-0">
                         <select class="form-control" [value]="2" id="category">
-                          <option
-                            disabled=""
-                            value="0"
-                            id="dontcate"
-                            style="display: none"
-                          >
+                          <option disabled="" value="0" id="dontcate" style="display: none">
                             เลือกประเภทวัสดุ
                           </option>
                           <!-- <option
@@ -183,14 +162,9 @@
                           <option value="48" id="3">aaabbbsss</option>
                         </select>
                       </div>
-                      <button
-                        type="button"
-                        class="btn btn-icon btn-success"
-                        data-toggle="modal"
-                        data-target="#app-category-management"
-                        (click)="toggleSidebar('app-category-management')"
-                        rippleEffect
-                      >
+                      <button type="button" class="btn btn-icon btn-success" data-toggle="modal"
+                        data-target="#app-category-management" (click)="toggleSidebar('app-category-management')"
+                        rippleEffect>
                         <span [data-feather]="'plus'"></span>
                       </button>
                     </div>
@@ -198,14 +172,10 @@
                   <div class="col-12">
                     <div class="form-group row">
                       <div class="col-sm-3 col-form-label text-sm-right">
-                        <label>บัญชี</label>
+                        <label>บัญชี</label><span style="color:red; ">*</span>
                       </div>
                       <div class="col-sm-5 ppd">
-                        <select
-                          class="form-control"
-                          [value]="2"
-                          id="material_account"
-                        >
+                        <select class="form-control" [value]="2" id="material_account">
                           <option disabled="" value="0" selected="">
                             เลือกบัญชีวัสดุ
                           </option>
@@ -225,14 +195,10 @@
                   <div class="col-12">
                     <div class="form-group row">
                       <div class="col-sm-3 col-form-label text-sm-right">
-                        <label>วิธีคิดต้นทุนวัสดุ</label>
+                        <label>วิธีคิดต้นทุนวัสดุ</label><span style="color:red; ">*</span>
                       </div>
                       <div class="col-sm-5 ppd">
-                        <select
-                          class="form-control"
-                          id="costing_method_material"
-                          [value]="2"
-                        >
+                        <select class="form-control" id="costing_method_material" [value]="2">
                           <!-- <select
                         class="form-control"
                         id="costing_method_material"
@@ -251,31 +217,22 @@
                   <div class="col-sm-9 offset-sm-3">
                     <div class="form-group">
                       <div class="custom-control custom-checkbox">
-                        <input
-                          type="checkbox"
-                          class="custom-control-input"
-                          id="stock_count"
-                        />
+                        <input type="checkbox" class="custom-control-input" id="stock_count" />
                         <!-- <input
                         type="checkbox"
                         class="custom-control-input"
                         id="stock_count"
                         [(ngModel)]="material.stock_count"
                       /> -->
-                        <label class="custom-control-label" for="customCheck1"
-                          >วัสดุนับสต๊อก</label
-                        >
+                        <label class="custom-control-label" for="stock_count">วัสดุนับสต๊อก</label>
                       </div>
                     </div>
                   </div>
+
                   <div class="col-sm-9 offset-sm-3">
                     <div class="form-group">
                       <div class="custom-control custom-checkbox">
-                        <input
-                          type="checkbox"
-                          class="custom-control-input"
-                          id="overdraw_stock"
-                        />
+                        <input type="checkbox" class="custom-control-input" id="overdraw_stock" />
                         <!-- 
                         <input
                         type="checkbox"
@@ -283,29 +240,21 @@
                         id="overdraw_stock"
                         [(ngModel)]="material.overdraw_stock"
                       /> -->
-                        <label class="custom-control-label" for="customCheck1"
-                          >ให้เบิกเกินสต๊อกได้</label
-                        >
+                        <label class="custom-control-label" for="overdraw_stock">ให้เบิกเกินสต๊อกได้</label>
                       </div>
                     </div>
                   </div>
                   <div class="col-sm-9 offset-sm-3">
                     <div class="form-group">
                       <div class="custom-control custom-checkbox">
-                        <input
-                          type="checkbox"
-                          class="custom-control-input"
-                          id="active"
-                        />
+                        <input type="checkbox" class="custom-control-input" id="active" />
                         <!-- <input
                         type="checkbox"
                         class="custom-control-input"
                         id="active"
                         [(ngModel)]="material.active"
                       /> -->
-                        <label class="custom-control-label" for="customCheck1"
-                          >ใช้งานวัสดุ</label
-                        >
+                        <label class="custom-control-label" for="active">ใช้งานวัสดุ</label>
                       </div>
                     </div>
                   </div>
@@ -317,26 +266,18 @@
                         <label>วันหมดอายุ</label>
                       </div>
                       <div class="col-sm-5 ppd">
+
+
+
                         <div class="input-group">
-                          <input
-                            class="form-control"
-                            placeholder="yyyy-mm-dd"
-                            name="expiry-Date"
-                            [(ngModel)]="basicDPdata"
-                            ngbDatepicker
-                            #basicDP="ngbDatepicker"
-                          />
+                          <input class="form-control" placeholder="yyyy-mm-dd" name="expiry-Date"
+                            [(ngModel)]="basicDPdata" ngbDatepicker #basicDP="ngbDatepicker" />
                           <div class="input-group-append">
-                            <button
-                              class="
+                            <button class="
                                 btn btn-outline-secondary
                                 feather
                                 icon-calendar
-                              "
-                              (click)="basicDP.toggle()"
-                              type="button"
-                              rippleEffect
-                            ></button>
+                              " (click)="basicDP.toggle()" type="button" rippleEffect></button>
                           </div>
                         </div>
                       </div>
@@ -348,12 +289,9 @@
             </div>
 
 
-            <h4
-            class="mt-0 ml-2 mb-0 "
-            style="display: block; border-bottom: 1px dashed"
-          >
-          รายละเอียดวัสดุ
-          </h4>
+            <h4 class="mt-0 ml-2 mb-0 " style="display: block; border-bottom: 1px dashed">
+              รายละเอียดวัสดุ
+            </h4>
 
 
             <!-- <div class="card-header">
@@ -362,86 +300,37 @@
             <hr /> -->
             <div class="card-body pb-1">
               <div class="form-group row">
-                <label
-                  class="col-md-2 col-form-label text-md-right"
-                  for="brand-column"
-                  >ยี่ห้อ</label
-                >
+                <label class="col-md-2 col-form-label text-md-right" for="brand-column">ยี่ห้อ</label>
                 <div class="col-md-4 col-12">
-                  <input
-                    type="text"
-                    id="brand-column"
-                    class="form-control"
-                    placeholder="ยี่ห้อ"
-                    name="brand-column"
-                    [(ngModel)]="material.brand"
-                  />
+                  <input type="text" id="brand-column" class="form-control" placeholder="ยี่ห้อ" name="brand-column"
+                    [(ngModel)]="material.brand" />
                 </div>
-                <label
-                  class="col-md-2 col-form-label text-md-right"
-                  for="version-column"
-                  >รุ่น</label
-                >
+                <label class="col-md-2 col-form-label text-md-right" for="version-column">รุ่น</label>
                 <div class="col-md-4 col-12">
-                  <input
-                    type="text"
-                    id="version-column"
-                    class="form-control"
-                    placeholder="รุ่น"
-                    name="version-column"
-                    [(ngModel)]="material.version"
-                  />
+                  <input type="text" id="version-column" class="form-control" placeholder="รุ่น" name="version-column"
+                    [(ngModel)]="material.version" />
                 </div>
               </div>
 
               <div class="form-group row">
-                <label
-                  class="col-md-2 col-form-label text-md-right"
-                  for="color-column"
-                  >สี</label
-                >
+                <label class="col-md-2 col-form-label text-md-right" for="color-column">สี</label>
 
                 <div class="col-md-4 col-12">
-                  <input
-                    type="text"
-                    id="color-column"
-                    class="form-control"
-                    placeholder="สี"
-                    name="color-column"
-                    [(ngModel)]="material.color"
-                  />
+                  <input type="text" id="color-column" class="form-control" placeholder="สี" name="color-column"
+                    [(ngModel)]="material.color" />
                 </div>
-                <label
-                  class="col-md-2 col-form-label text-md-right"
-                  for="size-floating"
-                  >ขนาด</label
-                >
+                <label class="col-md-2 col-form-label text-md-right" for="size-floating">ขนาด</label>
                 <div class="col-md-4 col-12">
-                  <input
-                    type="text"
-                    id="size-floating"
-                    class="form-control"
-                    name="size-floating"
-                    placeholder="ขนาด"
-                    [(ngModel)]="material.size"
-                  />
+                  <input type="text" id="size-floating" class="form-control" name="size-floating" placeholder="ขนาด"
+                    [(ngModel)]="material.size" />
                 </div>
               </div>
               <div class="form-group row">
-                <label
-                  class="col-md-2 col-form-label text-md-right"
-                  for="basicTextarea"
-                  >ข้อมูลจำเพาะ</label
-                >
+                <label class="col-md-2 col-form-label text-md-right" for="basicTextarea">ข้อมูลจำเพาะ</label>
                 <div class="col-md-10 col-12">
                   <fieldset class="form-group">
-                    <textarea
-                      class="form-control"
-                      id="description"
-                      rows="2"
-                      placeholder="ข้อมูลจำเพาะ"
-                      [(ngModel)]="material.description"
-                    ></textarea>
+                    <textarea class="form-control" id="description" rows="2" placeholder="ข้อมูลจำเพาะ"
+                      [(ngModel)]="material.description"></textarea>
                   </fieldset>
                 </div>
               </div>
@@ -449,15 +338,12 @@
           </div>
         </div>
 
-        <div class="col-sm-4 col-12">
+        <div class="col-xl-4 col-12">
           <div class="card">
 
-            <h4
-            class="mt-2 ml-2 mb-0"
-            style="display: block; border-bottom: 1px dashed"
-          >
-          หน่วยวัสดุ
-          </h4>
+            <h4 class="mt-2 ml-2 mb-0" style="display: block; border-bottom: 1px dashed">
+              หน่วยวัสดุ
+            </h4>
 
             <!-- <div class="card-header">
               <h4 class="card-title">หน่วยวัสดุ</h4>
@@ -467,28 +353,21 @@
 
 
             <div class="">
-              <button
-              type="button"
-              class="btn btn-success btn-sm mt-1 mb-0 mr-3 pull-right"
-              rippleEffect
-            >
-              เพิ่มหน่วย
-            </button>
+              <button type="button" class="btn btn-success btn-sm mt-1 mb-0 mr-3 pull-right" data-toggle="modal"
+                data-target="#app-uom-management" (click)="toggleSidebar('app-uom-management')" rippleEffect>
+                เพิ่มหน่วย
+              </button>
             </div>
 
-            
+
             <div class="card-body pb-1 mt-0">
               <div class="col-12">
                 <div class="form-group row">
-                  <div class="col-sm-3 col-form-label">
-                    <label>หน่วยซื้อ</label>
+                  <div class="col-sm-4 col-form-label  text-sm-right">
+                    <label>หน่วยซื้อ</label><span style="color:red; ">*</span>
                   </div>
-                  <div class="col-sm-9">
-                    <select
-                      class="form-control"
-                      id="uom_in"
-                      [(ngModel)]="material.uom_in"
-                    >
+                  <div class="col-sm-8">
+                    <select class="form-control" id="uom_in" [(ngModel)]="material.uom_in">
                       <option disabled="" value="0" selected="">
                         เลือกหน่วยซื้อ
                       </option>
@@ -510,15 +389,11 @@
               </div>
               <div class="col-12">
                 <div class="form-group row">
-                  <div class="col-sm-3 col-form-label">
-                    <label>หน่วยเก็บ</label>
+                  <div class="col-sm-4 col-form-label  text-sm-right">
+                    <label>หน่วยเก็บ</label><span style="color:red; ">*</span>
                   </div>
-                  <div class="col-sm-9">
-                    <select
-                      class="form-control"
-                      id="uom_stock"
-                      [(ngModel)]="material.uom_stock"
-                    >
+                  <div class="col-sm-8">
+                    <select class="form-control" id="uom_stock" [(ngModel)]="material.uom_stock">
                       <option disabled="" value="0" selected="">
                         เลือกหน่วยซื้อ
                       </option>
@@ -545,16 +420,11 @@
               <div class="row">
                 <div class="col-md-3 col-3">
                   <div class="form-group">
-                    <input
-                      type="text"
-                      id="qty-in-column"
-                      class="form-control"
-                      placeholder="หน่วยซื้อ"
-                      name="qty-in--column"
-                      [(ngModel)]="material.qty_in"
-                    />
+                    <input type="text" id="qty-in-column" class="form-control" placeholder="หน่วยซื้อ"
+                      name="qty-in--column" [(ngModel)]="material.qty_in" />
                   </div>
                 </div>
+
                 <div class="col-md-2 col-2">
                   <label for="qty-in-column">หน่วย</label>
                 </div>
@@ -567,14 +437,8 @@
 
                 <div class="col-md-3 col-3">
                   <div class="form-group">
-                    <input
-                      type="text"
-                      id="qty-stock-column"
-                      class="form-control"
-                      placeholder="หน่วยเก็บ"
-                      name="qty-stock-column"
-                      [(ngModel)]="material.qty_stock"
-                    />
+                    <input type="text" id="qty-stock-column" class="form-control" placeholder="หน่วยเก็บ"
+                      name="qty-stock-column" [(ngModel)]="material.qty_stock" />
                   </div>
                 </div>
                 <div class="col-md-2 col-2">
@@ -585,35 +449,26 @@
               </div>
             </div>
 
-            <div class="card-header">
+            <!-- <div class="card-header">
               <h4 class="card-title">รูปภาพ</h4>
-            </div>
+            </div> -->
+
+            <h4 class="mt-0 ml-2 mb-0 " style="display: block; border-bottom: 1px dashed">
+              รูปภาพ
+            </h4>
+
             <div class="card-body pb-1">
               <div class="row">
-                <img
-                  class="img-fluid pull-right ml-5"
-                  style="height: 70px; margin-bottom: 5px; margin-right: 5px"
-                  src="../../../../assets/images/photo.jpg"
-                />
-                <div
-                  class="col-md-12 pull-right"
-                  *ngFor="let url of imageurls; let i = index"
-                >
-                  <button
-                    type="button"
-                    class="btn btn-icon btn-warning pull-right"
-                    style="margin-top: auto"
-                    rippleEffect
-                    (click)="removeImage(i)"
-                  >
+                <img class="img-fluid pull-right ml-5" style="height: 70px; margin-bottom: 5px; margin-right: 5px"
+                  src="../../../../assets/images/photo.jpg" />
+                <div class="col-md-12 pull-right" *ngFor="let url of imageurls; let i = index">
+                  <button type="button" class="btn btn-icon btn-warning pull-right" style="margin-top: auto"
+                    rippleEffect (click)="removeImage(i)">
                     <span [data-feather]="'trash'"></span>
                   </button>
 
-                  <img
-                    class="img-fluid pull-right"
-                    style="height: 70px; margin-bottom: 5px; margin-right: 5px"
-                    [src]="url"
-                  />
+                  <img class="img-fluid pull-right" style="height: 70px; margin-bottom: 5px; margin-right: 5px"
+                    [src]="url" />
                   <span></span>
                 </div>
               </div>
@@ -635,32 +490,38 @@
               </fieldset> -->
 
               <fieldset class="form-group">
-                <label for="file-upload-multiple">Multiple:111111</label>
+                <!-- <label for="file-upload-multiple">Multiple:111111</label> -->
                 <div class="custom-file">
-                  <input
-                    type="file"
-                    class="custom-file-input"
-                    (change)="onSelectFile($event)"
-                    multiple
-                    id="file-upload-multiple"
-                  />
+                  <input type="file" class="custom-file-input" (change)="onSelectFile($event)" multiple
+                    id="file-upload-multiple" />
                   <label class="custom-file-label">Choose file</label>
                 </div>
               </fieldset>
 
+              <div class="col-md-12 col-lg-12">
+                <div ng2FileDrop [ngClass]="{ 'file-drop-over': hasBaseDropZoneOver }" (fileOver)="fileOverBase($event)"
+                  [uploader]="uploader" class="py-5 mb-3 text-center font-medium-5 text-uppercase file-drop-zone">
+                  Drop Files
+                </div>
+              </div>
               <!-- <button (click)="urllog()">sho url</button> -->
               <!--   accept="image/*" -->
             </div>
           </div>
-<div class="pull-right">
-  <button type="button" rippleEffect class="btn btn-primary mr-1">
-    Submit
-  </button>
-  <button type="reset" rippleEffect class="btn btn-outline-secondary">
-    Reset
-  </button>
-</div>
-         
+          <div class="pull-right">
+
+            <!-- Sweet Alert ConfirmColor -->
+            <button type="button" [swal]="SweetAlertConfirmColor" rippleEffect class="btn btn-primary mr-1">
+              บันทึก
+            </button>
+            <!-- Swal of Sweet Alert ConfirmColor -->
+            <swal #SweetAlertConfirmColor (open)="ConfirmColorOpen()"></swal>
+            <!-- Swal of Sweet Alert ConfirmColor -->
+            <button type="reset" rippleEffect class="btn btn-outline-secondary">
+              Reset
+            </button>
+          </div>
+
         </div>
       </div>
     </section>
@@ -672,28 +533,26 @@
 
 
   <!-- Add Payment Sidebar -->
-  <core-sidebar
-    class="modal modal-slide-in sidebar-todo-modal fade"
-    name="app-group-management"
-    overlayClass="modal-backdrop"
-    hideOnEsc="true"
-  >
+  <core-sidebar class="modal modal-slide-in sidebar-todo-modal fade" name="app-group-management"
+    overlayClass="modal-backdrop" hideOnEsc="true">
     <app-group-management></app-group-management>
   </core-sidebar>
   <!--/  Add Payment Sidebar -->
 
-   <!-- Add Payment Sidebar -->
-   <core-sidebar
-   class="modal modal-slide-in sidebar-todo-modal fade"
-   name="app-category-management"
-   overlayClass="modal-backdrop"
-   hideOnEsc="true"
- >
-   <app-category-management></app-category-management>
- </core-sidebar>
- <!--/  Add Payment Sidebar -->
+  <!-- Add Payment Sidebar -->
+  <core-sidebar class="modal modal-slide-in sidebar-todo-modal fade" name="app-category-management"
+    overlayClass="modal-backdrop" hideOnEsc="true">
+    <app-category-management></app-category-management>
+  </core-sidebar>
+  <!--/  Add Payment Sidebar -->
 
 
+  <!-- Add Payment Sidebar -->
+  <core-sidebar class="modal modal-slide-in sidebar-todo-modal fade" name="app-uom-management"
+    overlayClass="modal-backdrop" hideOnEsc="true">
+    <app-uom-management></app-uom-management>
+  </core-sidebar>
+  <!--/  Add Payment Sidebar -->
 
 
 </div>

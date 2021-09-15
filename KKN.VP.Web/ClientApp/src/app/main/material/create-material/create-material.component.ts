@@ -18,6 +18,8 @@ import {
 import Stepper from "bs-stepper";
 import { Console } from "console";
 import { FileUploader } from "ng2-file-upload";
+import { FlatpickrOptions } from "ng2-flatpickr";
+import Swal from "sweetalert2";
 const URL = "https://your-url.com";
 interface item {
   item_id: number;
@@ -36,6 +38,11 @@ interface item {
 export class CreateMaterialComponent implements OnInit {
   // public
   public basicDPdata: NgbDateStruct;
+  public customDateOptions: FlatpickrOptions = {
+    altFormat: 'j-m-Y',
+    altInput: true
+  }
+  
   public materials = [
     {
       item_id: "",
@@ -57,7 +64,7 @@ export class CreateMaterialComponent implements OnInit {
       uom_stock: "",
       qty_stock: "",
       expiry: "",
-      active:""
+      active: "",
     },
   ];
 
@@ -83,11 +90,9 @@ export class CreateMaterialComponent implements OnInit {
     updatedate: "2021-08-31T17:44:59.913",
     expiry: "2021-09-29T00:00:00",
     active: false,
-    
   };
 
-
-    // Public Methods
+  // Public Methods
   // -----------------------------------------------------------------------------------------------------
 
   /**
@@ -136,7 +141,6 @@ export class CreateMaterialComponent implements OnInit {
   //   }
   // }
 
-
   itemlist: item[] = [
     { item_id: 5, item_name: "ปูนSCG1111", group_id: 1, category_id: 1 },
   ];
@@ -149,6 +153,42 @@ export class CreateMaterialComponent implements OnInit {
     file: new FormControl("", [Validators.required]),
     fileSource: new FormControl("", [Validators.required]),
   });
+
+  ConfirmColorOpen() {
+    Swal.fire({
+      title: "คุณต้องการเพิ่มวัสดุใหม่หรือไม่",
+      // text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "ใช่",
+      cancelButtonText: "ไม่",
+      customClass: {
+        confirmButton: "btn btn-primary",
+        cancelButton: "btn btn-danger ml-1",
+      },
+    }).then(function (result) {
+      if (result.value) {
+        console.log("1111111")
+        Swal.fire({
+          title: "เพิ่มวัสดุ!",
+          text: "เพิ่มวัสดุสำเร็จ",
+          icon: "success",
+          customClass: {
+            confirmButton: "btn btn-success",
+          },
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire({
+          title: "ยกเลืก",
+          text: "คุณได้ยกเลิกบันทึกข้อมูล",
+          icon: "error",
+          customClass: {
+            confirmButton: "btn btn-success",
+          },
+        });
+      }
+    });
+  }
 
   imagePath: string;
 
@@ -195,8 +235,6 @@ export class CreateMaterialComponent implements OnInit {
     // console.log(this.myForm.value.fileSource[1].base64String)
   }
   ttttt = [this.imageurls, this.dataimg];
-
-  
 
   images = [];
   onFileChange(event) {
@@ -328,8 +366,10 @@ export class CreateMaterialComponent implements OnInit {
     return false;
   }
 
-  constructor(private http: HttpClient,private _coreSidebarService: CoreSidebarService,) { }
-
+  constructor(
+    private http: HttpClient,
+    private _coreSidebarService: CoreSidebarService
+  ) {}
 
   toggleSidebar(name): void {
     this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
@@ -350,7 +390,8 @@ export class CreateMaterialComponent implements OnInit {
 
     // content header
     this.contentHeader = {
-      headerTitle: "Create Material",
+      // headerTitle: "Create Material",
+      headerTitle: "วัสดุ",
       actionButton: false,
       breadcrumb: {
         type: "",
@@ -363,6 +404,11 @@ export class CreateMaterialComponent implements OnInit {
           {
             name: "CreateMaterial",
             isLink: false,
+          },
+          {
+            name: "Back",
+            isLink: true,
+            link: "/material",
           },
         ],
       },

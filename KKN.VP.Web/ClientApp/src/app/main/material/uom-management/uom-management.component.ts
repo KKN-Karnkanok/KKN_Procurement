@@ -8,17 +8,17 @@ import {
 } from "@swimlane/ngx-datatable";
 import { Subject } from "rxjs";
 
-
-encapsulation: ViewEncapsulation.None
+encapsulation: ViewEncapsulation.None;
 @Component({
-  selector: "app-group-management",
-  templateUrl: "./group-management.component.html",
-  styleUrls: ["./group-management.component.scss"],
+  selector: "app-uom-management",
+  templateUrl: "./uom-management.component.html",
+  styleUrls: ["./uom-management.component.scss"],
   encapsulation: ViewEncapsulation.None,
 })
-export class GroupManagementComponent implements OnInit {
+export class UomManagementComponent implements OnInit {
   public contentHeader: object;
-  public headerTitle =  "จัดการกลุ่มวัสดุ";
+  // public headerTitle = "Uom Manament";
+  public headerTitle = "จัดการหน่วยวัสดุ";
 
   private _unsubscribeAll: Subject<any>;
   private tempData = [];
@@ -32,59 +32,21 @@ export class GroupManagementComponent implements OnInit {
   public SelectionType = SelectionType;
 
   public rows = [
-    {
-      groupcode: "CC",
-      groupname: "congert",
-      active: 1,
-    },
-    {
-      groupcode: "ce",
-      groupname: "ab",
-      active: 1,
-    },
-    {
-      groupcode: "cf",
-      groupname: "jkj",
-      active: 1,
-    },
-    {
-      groupcode: "Ct",
-      groupname: "ti",
-      active: 1,
-    },
-    {
-      groupcode: "Cp",
-      groupname: "cong44",
-      active: 1,
-    }, {
-      groupcode: "Cp",
-      groupname: "csdfert",
-      active: 1,
-    }, {
-      groupcode: "Cp",
-      groupname: "congrt",
-      active: 1,
-    }, {
-      groupcode: "Cp",
-      groupname: "conert",
-      active: 2,
-    }, {
-      groupcode: "Cp",
-      groupname: "t",
-      active: 2,
-    }, {
-      groupcode: "Cp",
-      groupname: "yiert",
-      active: 2,
-    }, {
-      groupcode: "Cp",
-      groupname: "cont",
-      active: 2,
-    },
+    { uom_id: 1, uom_name: "ลัง", active: 1 },
+    { uom_id: 2, uom_name: "กล่อง", active: 1 },
+    { uom_id: 3, uom_name: "ชิ้น", active: 2 },
+    { uom_id: 4, uom_name: "คัน", active: 2 },
+    { uom_id: 5, uom_name: "เครื่อง", active: 2 },
+    { uom_id: 6, uom_name: "เมตร", active: 2 },
+    { uom_id: 7, uom_name: "เล่ม", active: 1 },
+    { uom_id: 8, uom_name: "เส้น", active: 1 },
+    { uom_id: 9, uom_name: "แท่ง", active: 1 },
+    { uom_id: 10, uom_name: "แผ่น", active: 1 },
+    { uom_id: 11, uom_name: "ใบ", active: 1 },
+    { uom_id: 12, uom_name: "ถุง", active: 1 },
   ];
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
-  
 
   /**
    * Method Search (filter)
@@ -93,10 +55,9 @@ export class GroupManagementComponent implements OnInit {
    */
   filterUpdate(event) {
     const val = event.target.value.toLowerCase();
-console.log(val)
+    // console.log(val)
     // filter our data
     const temp = this.tempData.filter(function (d) {
-      console.log("d data",d);
       return d.full_name.toLowerCase().indexOf(val) !== -1 || !val;
     });
 
@@ -119,7 +80,10 @@ console.log(val)
     console.log("checkbox target group !!!!!!", !event.target.checked);
   }
 
-  constructor(private _coreSidebarService: CoreSidebarService,private modalService: NgbModal) {
+  constructor(
+    private _coreSidebarService: CoreSidebarService,
+    private modalService: NgbModal
+  ) {
     this._unsubscribeAll = new Subject();
   }
 
@@ -131,64 +95,61 @@ console.log(val)
     this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
   }
 
-
-  
-// modal Open Success
-modalOpenSuccess(modalSuccess) {
-  this.modalService.open(modalSuccess, {
-    centered: true,
-    windowClass: 'modal modal-success'
-  });
+  // modal Open Success
+  modalOpenSuccess(modalSuccess) {
+    this.modalService.open(modalSuccess, {
+      centered: true,
+      windowClass: "modal modal-success",
+    });
   }
-  
+
   // modal Open Danger
   modalOpenDanger(modalDanger) {
-  this.modalService.open(modalDanger, {
-    centered: true,
-    windowClass: 'modal modal-danger'
-  });
+    this.modalService.open(modalDanger, {
+      centered: true,
+      windowClass: "modal modal-danger",
+    });
   }
-  
+
   // modal Open Info
   modalOpenInfo(modalInfo) {
-  this.modalService.open(modalInfo, {
-    centered: true,
-    windowClass: 'modal modal-info'
-  });
+    this.modalService.open(modalInfo, {
+      centered: true,
+      windowClass: "modal modal-info",
+    });
   }
-  
+
   // modal Open Warning
   modalOpenWarning(modalWarning) {
-  this.modalService.open(modalWarning, {
-    centered: true,
-    windowClass: 'modal modal-warning'
-  });
+    this.modalService.open(modalWarning, {
+      centered: true,
+      windowClass: "modal modal-warning",
+    });
   }
-  
+
   // modal Open Dark
   modalOpenDark(modalDark) {
-  this.modalService.open(modalDark, {
-    centered: true,
-    windowClass: 'modal modal-dark'
-  });
+    this.modalService.open(modalDark, {
+      centered: true,
+      windowClass: "modal modal-dark",
+    });
   }
-  
+
   modalOpenPrimary(modalPrimary) {
     this.modalService.open(modalPrimary, {
       centered: true,
-      size:'lg',
-      windowClass: 'modal modal-primary'
+      size: "lg",
+      windowClass: "modal modal-primary",
     });
   }
-  
+
   ngOnInit() {
     console.log("---------------group-management--------------------");
-    
 
     this.kitchenSinkRows = this.rows;
 
     this.contentHeader = {
-      headerTitle: "Group Manament",
+      headerTitle: "Uom Manament",
       actionButton: false,
       breadcrumb: {
         type: "",

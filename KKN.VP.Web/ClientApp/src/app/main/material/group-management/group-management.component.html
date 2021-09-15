@@ -18,13 +18,13 @@
             <div class="content-body">
               <!-- content-header component -->
 
-              <div class="row">
-                <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <!-- <div class="row">
+                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <app-content-header
                     [contentHeader]="contentHeader"
                   ></app-content-header>
-                </div> -->
-              </div>
+                </div> 
+              </div> -->
 
               <!-- content-header component -->
 
@@ -90,6 +90,8 @@
                         </div>
                       </div>
                     </div>
+
+
                     <ngx-datatable [rows]="kitchenSinkRows" [rowHeight]="58" class="bootstrap core-bootstrap"
                       [limit]="10" [columnMode]="ColumnMode.force" [headerHeight]="40" [footerHeight]="50"
                       [scrollbarH]="true" [selectionType]="SelectionType.cell" [limit]="basicSelectedOption"
@@ -114,24 +116,24 @@
                           <label class="text-center" for="rowChkbxRef{{ rowIndex }}">{{rowIndex + 1}}</label>
                         </ng-template>
                       </ngx-datatable-column>
-                      <ngx-datatable-column name="รหัสกลุ่ม" prop="groupcode" [width]="150">
-                      </ngx-datatable-column>
+                      <!-- <ngx-datatable-column name="รหัสกลุ่ม" prop="groupcode" [width]="150">
+                      </ngx-datatable-column> -->
                       <ngx-datatable-column name="ชื่อกลุ่ม" prop="groupname" [width]="200"></ngx-datatable-column>
 
-                      <ngx-datatable-column name="Status" prop="active" [width]="120">
+                      <ngx-datatable-column name="สถานะ" prop="active" [width]="120">
                         <ng-template let-status="value" ngx-datatable-cell-template>
                           <div class="badge badge-pill" [ngClass]="{
-                              'badge-light-primary': status == '1',
-                              'badge-light-success': status == '2',
-                              'badge-light-danger': status == '3',
+                              'badge-light-success': status == '1',
+                              'badge-light-danger': status == '2',
+                              'badge-light-primary': status == '3',
                               'badge-light-warning': status == '4',
                               'badge-light-info': status == '5'
                             }">
                             {{
                             status == 1
-                            ? "Current"
+                            ? "ใช้งาน"
                             : status == 2
-                            ? "Professional"
+                            ? "ไม่ใช้งาน"
                             : status == 3
                             ? "Rejected"
                             : status == 4
@@ -156,17 +158,36 @@
   </div>
 </div>
 
-<div class="modal-primary d-inline-block">
+<div class="modal-primary d-inline-block " >
   <!-- Modal -->
-  <ng-template #modalPrimary let-modal>
+  <ng-template #modalPrimary let-modal >
     <div class="modal-header">
-      <h5 class="modal-title" id="myModalLabel160">Group Modal</h5>
+      <h5 class="modal-title" id="myModalLabel160">สร้างกลุ่ม</h5>
       <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="modal-body" tabindex="0" ngbAutofocus>
-      <app-create-group></app-create-group>
+    <div class="modal-body pb-0" tabindex="0" ngbAutofocus>
+      <app-create-group ></app-create-group>
+    </div>
+    <div class="modal-footer">
+      <button
+      (click)="addItem(newItem.value, newName.value)"
+      rippleEffect
+      class="btn btn-primary mr-1"
+    >
+      <span [data-feather]="'check'" [class]="'mr-25'"></span>
+      สร้าง
+    </button>
+    <button
+      type="reset"
+      rippleEffect
+      class="btn btn-outline-secondary"
+      (click)="modal.dismiss('Cross click')" 
+    >
+      <span [data-feather]="'x'" [class]="'mr-25'"></span> กลับ
+    </button>
+
     </div>
     <!-- <div class="modal-footer">
     
