@@ -1,0 +1,10 @@
+@import '@core/scss/angular/libs/datatables.component.scss';
+@import '@core/scss/angular/libs/select.component.scss';
+
+.datatable-scroll {
+  width: auto !important;
+}
+
+datatable-row-wrapper:hover {
+  background-color: #CCE7E7;
+}

@@ -1,0 +1,117 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <!-- content-header component -->
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <button type="button" class="btn btn-gradient-success pull-right" data-toggle="modal"
+          data-target="#app-supplier-info" (click)="createPage($event,toggleSidebar('app-supplier-info'))">
+          <span [data-feather]="'plus'" [class]="'mr-25'"></span>เพิ่มบริษัทคู่ค้า
+        </button>
+      </div>
+    </div>
+    <!-- content-header component -->
+
+    <div class="card">
+      <div class="card-body">
+        <div class="row ">
+          <div class="col-md-4 col-12 ml-1">
+            <div class="form-group row">
+              <label class=" col-form-label  text-sm-right" for="groupname">กลุ่มวัสดุ</label>
+              <div class="col-md-10 col-12">
+                <ng-select [items]="selectGroup" bindLabel="groupname" placeholder="เลือกกลุ่มวัสดุ" > </ng-select>
+                <!-- <select class="form-control mb-1" id="selectDefault">
+                  <option hidden selected disabled>Open this select Group</option>
+                  <option *ngFor="let Group of selectGroup" [value]="Group.group_id">
+                    {{ Group.groupname }}
+                  </option>
+                </select> -->
+                <!-- <select class="form-control mb-1 ml-1" id="supplierCounty">
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-5 col-12 ml-1">
+            <div class="form-group row">
+              <label class=" col-form-label  text-sm-right" for="search">ชื่อบริษัทคู่ค้า</label>
+              <div class="col-md-9 col-12">
+                <div class="input-group ">
+                  <input type="text" class="form-control" placeholder="ค้นหาชื่อบริษัทคู่ค้า" aria-label="Amount" />
+                  <div class="input-group-append ">
+                    <button class="btn btn-outline-primary" type="button" rippleEffect>
+                      <i data-feather="search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kitchen Sink Datatables -->
+        <section id="ngx-datatable-kitchen-sink">
+          <div class="row">
+            <div class=" col-12 d-flex justify-content-md-end">
+              <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                <label class="d-flex align-items-center">
+                  <select class="form-control mx-25" [(ngModel)]="basicSelectedOption">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+          </div>
+          <ngx-datatable [rows]="kitchenSinkRows" [rowHeight]="50" class="bootstrap core-bootstrap " [limit]="10"
+            [columnMode]="ColumnMode.force" [headerHeight]="40" [footerHeight]="40" [scrollbarH]="true"
+            [selectionType]="SelectionType.checkbox" [limit]="basicSelectedOption" (activate)="onActivate($event)"
+            (select)="onSelect($event)" (dblclick)="dbclick($event)">
+            <ngx-datatable-column [width]="20" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+              [resizeable]="false">
+              <ng-template ngx-datatable-header-template>
+                <label class="text-align-center">#</label>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value"
+                let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
+                <label class="text-center" for="rowChkbxRef{{ rowIndex }}">{{ rowIndex + 1 }}</label>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="ชื่อบริษัทคู่ค้า" prop="supplierName" [width]="200" ></ngx-datatable-column>
+            <ngx-datatable-column name="ผู้ติดต่อ" prop="contactPerson" [width]="90"></ngx-datatable-column>
+            <ngx-datatable-column name="มือถือ" prop="mobilePhone" [width]="100"></ngx-datatable-column>
+            <ngx-datatable-column name="เงื่อนไขการชำระ" prop="paymentCondition" [width]="80"></ngx-datatable-column>
+            <ngx-datatable-column name="โทรศัพท์" prop="phone" [width]="100"></ngx-datatable-column>
+            <ngx-datatable-column name="โทรสาร" prop="fax" [width]="100"></ngx-datatable-column>
+            <ngx-datatable-column name="" [width]="20" [sortable]="false">
+              <ng-template ngx-datatable-cell-template let-rowIndex="row" let-value="value"
+                let-onCheckboxChangeFn="onCheckboxChangeFn">
+                <div class="d-flex align-items-center pull-right ">
+                  <button type="button" class="btn btn-icon btn-outline-primary "
+                    (click)="rowclick($event,rowIndex,toggleSidebar('app-supplier-info'))"
+                    id="rowChkbxRef{{ rowIndex }}" rippleEffect>
+                    <span [data-feather]="'eye'"></span></button>
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </section>
+        <!--/ Kitchen Sink Datatables -->
+      </div>
+    </div>
+  </div>
+  <!-- Add Payment Sidebar -->
+  <core-sidebar class="modal modal-slide-in sidebar-todo-modal fade" name="app-supplier-info"
+    overlayClass="modal-backdrop" hideOnEsc="true">
+    <app-supplier-info [inputData]=rowSelect></app-supplier-info>
+  </core-sidebar>
+  <!--/  Add Payment Sidebar -->
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
 import { CoreSidebarService } from "@core/components/core-sidebar/core-sidebar.service";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 import {
   ColumnMode,
   DatatableComponent,
@@ -17,6 +17,8 @@ encapsulation: ViewEncapsulation.None
   encapsulation: ViewEncapsulation.None,
 })
 export class GroupManagementComponent implements OnInit {
+private   modalRef :any;
+
   public contentHeader: object;
   public headerTitle =  "จัดการกลุ่มวัสดุ";
 
@@ -174,13 +176,21 @@ modalOpenSuccess(modalSuccess) {
   }
   
   modalOpenPrimary(modalPrimary) {
-    this.modalService.open(modalPrimary, {
+    this.modalRef = this.modalService.open(modalPrimary, {
       centered: true,
       size:'lg',
       windowClass: 'modal modal-primary'
     });
+    this.modalRef.closed.subscribe((data:any)=>{console.log("--result-data--",data)})
+
   }
   
+  saveClick(){
+    this.modalRef.close();
+
+    
+  }
+
   ngOnInit() {
     console.log("---------------group-management--------------------");
     

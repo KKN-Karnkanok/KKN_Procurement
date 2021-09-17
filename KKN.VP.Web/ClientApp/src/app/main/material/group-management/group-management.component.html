@@ -158,9 +158,9 @@
   </div>
 </div>
 
-<div class="modal-primary d-inline-block " >
+<div class="modal-primary d-inline-block ">
   <!-- Modal -->
-  <ng-template #modalPrimary let-modal >
+  <ng-template #modalPrimary let-modal>
     <div class="modal-header">
       <h5 class="modal-title" id="myModalLabel160">สร้างกลุ่ม</h5>
       <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
@@ -168,25 +168,20 @@
       </button>
     </div>
     <div class="modal-body pb-0" tabindex="0" ngbAutofocus>
-      <app-create-group ></app-create-group>
+      <app-create-group></app-create-group>
     </div>
     <div class="modal-footer">
-      <button
-      (click)="addItem(newItem.value, newName.value)"
-      rippleEffect
-      class="btn btn-primary mr-1"
-    >
-      <span [data-feather]="'check'" [class]="'mr-25'"></span>
-      สร้าง
-    </button>
-    <button
-      type="reset"
-      rippleEffect
-      class="btn btn-outline-secondary"
-      (click)="modal.dismiss('Cross click')" 
-    >
-      <span [data-feather]="'x'" [class]="'mr-25'"></span> กลับ
-    </button>
+      <button (click)="saveClick()"  rippleEffect class="btn btn-primary mr-1">
+        <span [data-feather]="'check'" [class]="'mr-25'"></span>
+        สร้าง
+      </button>
+      <!-- <button (click)="addItem(newItem.value, newName.value)" rippleEffect class="btn btn-primary mr-1">
+        <span [data-feather]="'check'" [class]="'mr-25'"></span>
+        สร้าง
+      </button> -->
+      <button type="reset" rippleEffect class="btn btn-outline-secondary" (click)="modal.dismiss('Cross click')">
+        <span [data-feather]="'x'" [class]="'mr-25'"></span> กลับ
+      </button>
 
     </div>
     <!-- <div class="modal-footer">

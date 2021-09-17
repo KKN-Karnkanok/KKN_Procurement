@@ -19,6 +19,7 @@ import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
 import { MaterialModule } from 'app/main/material/material.module';
+import { SupplierModule } from './main/supplier/supplier.module';
 
 const appRoutes: Routes = [
   {
@@ -27,9 +28,15 @@ const appRoutes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/material',
+    redirectTo: '/supplier',
     pathMatch: 'full'
   },
+  // {
+  //   path: '',
+  //   redirectTo: '/material',
+  //   pathMatch: 'full'
+  // },
+  
   // {
   //   path: '',
   //   redirectTo: '/home',
@@ -66,7 +73,8 @@ const appRoutes: Routes = [
     // App modules
     LayoutModule,
     SampleModule,
-    MaterialModule
+    MaterialModule,
+    SupplierModule
   ],
 
   bootstrap: [AppComponent]

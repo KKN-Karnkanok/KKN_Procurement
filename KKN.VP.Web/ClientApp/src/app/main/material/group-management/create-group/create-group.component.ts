@@ -64,6 +64,8 @@ titlename = "สร้างกลุ่ม";
   constructor() {}
 
   ngOnInit(): void {
+
+
     this.contentHeader = {
       headerTitle: "Create Group",
       actionButton: false,

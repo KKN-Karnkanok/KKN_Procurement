@@ -154,6 +154,17 @@ export class CreateMaterialComponent implements OnInit {
     fileSource: new FormControl("", [Validators.required]),
   });
 
+  public customDateOptionsex: FlatpickrOptions = {
+    altFormat: 'j-m-Y',
+    altInput: true
+  }
+
+  public customDateOptions11: FlatpickrOptions = {
+    altFormat: 'j-m-Y',
+    altInput: true
+  }
+
+
   ConfirmColorOpen() {
     Swal.fire({
       title: "คุณต้องการเพิ่มวัสดุใหม่หรือไม่",
