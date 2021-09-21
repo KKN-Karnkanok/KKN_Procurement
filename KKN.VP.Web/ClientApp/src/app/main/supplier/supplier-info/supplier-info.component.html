@@ -16,205 +16,246 @@
                         <div class="content-body">
                             <div class="card shadow-none bg-transparent border-secondary">
                                 <div class="card-body">
-                                    <form class="form" (ngSubmit)="(TDSimpleForm.form.valid)" #TDSimpleForm="ngForm">
+                                    <form class="form" [formGroup]="ReactiveUserDetailsForm"
+                                        (ngSubmit)="ReactiveUDFormOnSubmit()">
                                         <div class="form-group row">
                                             <label class="col-md-2 col-form-label text-md-right"
                                                 style="margin-right: 0px" for="supplierName">ชื่อบริษัทสินค้า<span
                                                     style="color: red">*</span></label>
                                             <div class="col-4">
-                                                <input type="text" id="supplierName" class="form-control" [class.error]="
-                            TDSimpleForm.submitted && supplierNameRef.invalid
-                          " [(ngModel)]="inputData.supplierName" name="supplierName" #supplierNameRef="ngModel"
-                                                    required placeholder="ชื่อบริษัทสินค้า" name="supplierName" />
-                                                <span *ngIf="
-                            TDSimpleForm.submitted && supplierNameRef.invalid
-                          " class="invalid-form">
-                                                    <small class="form-text text-danger"
-                                                        *ngIf="supplierNameRef.errors.required">กรุณาระบุชื่อบริษัทสินค้า</small>
-                                                </span>
+                                                <input type="text" id="SupplierName" class="form-control"
+                                                    [(ngModel)]="inputData.SupplierName" placeholder="ชื่อบริษัทสินค้า"
+                                                    name="SupplierName" formControlName="SupplierName"
+                                                    [ngClass]="{ 'is-invalid': ReactiveUDFormSubmitted && ReactiveUDForm.SupplierName.errors }" />
+                                                <div *ngIf="ReactiveUDFormSubmitted && ReactiveUDForm.SupplierName.errors"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="ReactiveUDForm.SupplierName.errors.required">ระบุ
+                                                        ชื่อบริษัทสินค้า</div>
+                                                    <div *ngIf="ReactiveUDForm.SupplierName.errors.minlength">
+                                                        ระบุอย่างน้อย 3 ตัวอักษร
+                                                    </div>
+                                                </div>
                                             </div>
                                             <!--  -->
                                             <label class="col-md-2 col-form-label text-md-right"
                                                 for="supplierGroupName">กลุ่มบริษัท<span
                                                     style="color: red">*</span></label>
                                             <div class="col-4">
-                                                <ng-select [items]="selectGroup" bindLabel="groupname"
-                                                    bindValue="groupname" [(ngModel)]="inputData.supplierGroupName"
-                                                    name="supplierGroupName" placeholder="เลือกกลุ่มบริษัท">
-                                                    <!--    -->
+                                                <ng-select id="SupplierGroupName" [items]="selectorSupplierGroupRows"
+                                                    bindLabel="SupplierGroupName" bindValue="SupplierGroupId"
+                                                    [(ngModel)]="inputData.SupplierGroupId" name="supplierGroupName"
+                                                    placeholder="เลือกกลุ่มบริษัท" formControlName="SupplierGroupName"
+                                                    [ngClass]="{ 'is-invalid': ReactiveUDFormSubmitted && ReactiveUDForm.SupplierGroupName.errors }">
                                                 </ng-select>
+                                                <div *ngIf="ReactiveUDFormSubmitted && ReactiveUDForm.SupplierGroupName.errors"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="ReactiveUDForm.SupplierGroupName.errors.required">
+                                                        Username is
+                                                        required</div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                                <!-- <span *ngIf="TDSimpleForm.submitted && supplierGroupNameRef.invalid" class="invalid-form">
-                                                    <small class="form-text text-danger" *ngIf="supplierGroupNameRef.errors.required"
-                                                      >กรุณาระบุกลุ่มบริษัท</small
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label text-md-right"
+                                                for="Address">ที่อยู่</label>
+                                            <div class="col-4">
+                                                <fieldset class="form-group">
+                                                    <textarea class="form-control" id="Address" rows="2"
+                                                        placeholder="ที่อยู่" [(ngModel)]="inputData.Address"
+                                                        name="Address" formControlName="Address"></textarea>
+                                                </fieldset>
+                                            </div>
+                                            <!--  -->
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label text-md-right"
+                                                for="Province">จังหวัด</label>
+                                            <div class="col-4">
+                                                <ng-select id="Province" [items]="selectprovice" bindLabel="Province"
+                                                    bindValue="Province" [(ngModel)]="inputData.Province"
+                                                    name="Province" placeholder="เลือกจังหวัด"
+                                                    formControlName="Province"
+                                                    [ngClass]="{ 'is-invalid': ReactiveUDFormSubmitted && ReactiveUDForm.Province.errors }">
+                                                </ng-select>
+                                            </div>
+                                            <!--  -->
+                                            <label class="col-md-2 col-form-label text-md-right"
+                                                for="Amphur">อำเภอ</label>
+                                            <div class="col-4">
+                                                <ng-select id="Amphur" [items]="selectamphur" bindLabel="Amphur"
+                                                    bindValue="Amphur" placeholder="เลือกอำเภอ"
+                                                    [(ngModel)]="inputData.Amphur" name="Amphur"
+                                                    formControlName="Amphur"
+                                                    [ngClass]="{ 'is-invalid': ReactiveUDFormSubmitted && ReactiveUDForm.Amphur.errors }">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label text-md-right"
+                                                for="Tumbon">ตำบล</label>
+                                            <div class="col-4">
+                                                <ng-select id="Tumbon" [items]="selecttumbon" bindLabel="Tumbon"
+                                                    bindValue="Tumbon" placeholder="เลือกตำบล"
+                                                    [(ngModel)]="inputData.Tumbon" name="Tumbon"
+                                                    formControlName="Tumbon"
+                                                    [ngClass]="{ 'is-invalid': ReactiveUDFormSubmitted && ReactiveUDForm.Tumbon.errors }">
+                                                </ng-select>
+                                            </div>
+                                            <!--  -->
+                                            <label class="col-md-2 col-form-label text-md-right"
+                                                for="PostCode">รหัสไปรษณีย์</label>
+                                            <div class="col-4">
+                                                <input type="text" id="PostCode" class="form-control"
+                                                    placeholder="00000" mask="00000" name="PostCode"
+                                                    [(ngModel)]="inputData.PostCode" formControlName="PostCode"
+                                                    [ngClass]="{ 'is-invalid': ReactiveUDFormSubmitted && ReactiveUDForm.PostCode.errors }" />
+                                                <div *ngIf="ReactiveUDFormSubmitted && ReactiveUDForm.PostCode.errors"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="ReactiveUDForm.PostCode.errors.required">Username is
+                                                        required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label text-md-right"
+                                                for="ContactPerson">พนักงงานที่ติดต่อได้</label>
+                                            <div class="col-4">
+                                                <input type="text" id="ContactPerson" class="form-control"
+                                                    placeholder="พนักงงานที่ติดต่อได้" name="ContactPerson"
+                                                    [(ngModel)]="inputData.ContactPerson"
+                                                    formControlName="ContactPerson"
+                                                    [ngClass]="{ 'is-invalid': ReactiveUDFormSubmitted && ReactiveUDForm.ContactPerson.errors }" />
+                                                    <div *ngIf="ReactiveUDFormSubmitted && ReactiveUDForm.ContactPerson.errors"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="ReactiveUDForm.ContactPerson.errors.required">ระบุ
+                                                        พนักงงานที่ติดต่อได้</div>
+                                                    <div *ngIf="ReactiveUDForm.ContactPerson.errors.minlength">
+                                                        ระบุอย่างน้อย 3 ตัวอักษร
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--  -->
+                                            <label class="col-md-2 col-form-label text-md-right"
+                                                for="ContactPersonPosition">ตำแหน่ง/ฝ่าย</label>
+                                            <div class="col-4">
+                                                <input type="text" id="ContactPersonPosition" class="form-control"
+                                                    placeholder="ตำแหน่ง/ฝ่าย" name="ContactPersonPosition"
+                                                    [(ngModel)]="inputData.ContactPersonPosition"
+                                                    formControlName="ContactPersonPosition"
+                                                    [ngClass]="{ 'is-invalid': ReactiveUDFormSubmitted && ReactiveUDForm.ContactPersonPosition.errors }" />
+                                                    <div *ngIf="ReactiveUDFormSubmitted && ReactiveUDForm.ContactPersonPosition.errors"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="ReactiveUDForm.ContactPersonPosition.errors.required">ระบุ
+                                                        ตำแหน่ง/ฝ่าย</div>
+                                                    <div *ngIf="ReactiveUDForm.ContactPersonPosition.errors.minlength">
+                                                        ระบุอย่างน้อย 3 ตัวอักษร
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label text-md-right"
+                                                for="MobilePhone">มือถือ</label>
+                                            <div class="col-4">
+                                                <input type="text" id="MobilePhone" class="form-control"
+                                                    placeholder="000-000-0000" mask="000-000-0000" name="MobilePhone"
+                                                    [(ngModel)]="inputData.MobilePhone" formControlName="MobilePhone"
+                                                    [ngClass]="{ 'is-invalid': ReactiveUDFormSubmitted && ReactiveUDForm.MobilePhone.errors }" />
+                                                <div *ngIf="ReactiveUDFormSubmitted && ReactiveUDForm.MobilePhone.errors"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="ReactiveUDForm.MobilePhone.errors.required">Username is
+                                                        required</div>
+                                                </div>
+                                            </div>
+                                            <!--  -->
+                                            <label class="col-md-2 col-form-label text-md-right"
+                                                for="Phone">โทรศัทพ์</label>
+                                            <div class="col-4">
+                                                <input type="text" id="Phone" class="form-control"
+                                                    placeholder="000-000-0000" mask="000-000-0000" name="Phone"
+                                                    [(ngModel)]="inputData.Phone" formControlName="Phone"
+                                                    [ngClass]="{ 'is-invalid': ReactiveUDFormSubmitted && ReactiveUDForm.Phone.errors }" />
+                                                <div *ngIf="ReactiveUDFormSubmitted && ReactiveUDForm.Phone.errors"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="ReactiveUDForm.Phone.errors.required">Username is
+                                                        required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label text-md-right" for="Fax">Fax</label>
+                                            <div class="col-4">
+                                                <input type="text" id="Fax" class="form-control" placeholder="Fax"
+                                                    name="Fax" [(ngModel)]="inputData.Fax" formControlName="Fax"
+                                                     />
+                                               
+                                            </div>
+                                            <!--  -->
+                                            <label class="col-md-2 col-form-label text-md-right"
+                                                for="Email">Email</label>
+                                            <div class="col-4">
+                                                <input type="text" id="Email" class="form-control" placeholder="Email"
+                                                    name="Email" [(ngModel)]="inputData.Email" formControlName="Email"
+                                                    [ngClass]="{ 'is-invalid': ReactiveUDFormSubmitted && ReactiveUDForm.Email.errors }" />
+                                                <div *ngIf="ReactiveUDFormSubmitted && ReactiveUDForm.Email.errors"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="ReactiveUDForm.Email.errors.required">ระบุอีเมล์</div>
+                                                    <div *ngIf="ReactiveUDForm.Email.errors.email">
+                                                        ที่อยู่อีเมล์ไม่ถูกต้อง</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label text-md-right"
+                                                for="PaymentType">ประเภทการชำระ</label>
+                                            <div class="col-4">
+                                                <ng-select id="PaymentType" [items]="selectpaymentType"
+                                                    bindLabel="PaymentType" bindValue="PaymentType"
+                                                    placeholder="เลือกประเภทการชำระ" [(ngModel)]="inputData.PaymentType"
+                                                    name="PaymentType" formControlName="PaymentType"
                                                     >
-                                                  </span> -->
+                                                </ng-select>
+
+                                            </div>
+                                            <!--  -->
+                                            <label class="col-md-2 col-form-label text-md-right"
+                                                for="PaymentCondition">เงื่อนไขการชำระ</label>
+                                            <div class="col-4">
+                                                <input type="text" id="PaymentCondition" class="form-control"
+                                                    placeholder="PaymentCondition" name="PaymentCondition"
+                                                    [(ngModel)]="inputData.PaymentCondition"
+                                                    formControlName="PaymentCondition"
+                                                    />
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label class="col-md-2 col-form-label text-md-right"
-                                                for="address">ที่อยู่</label>
+                                                for="Deliver">การจัดส่ง</label>
                                             <div class="col-4">
                                                 <fieldset class="form-group">
-                                                    <textarea class="form-control" id="address" rows="2"
-                                                        placeholder="ที่อยู่" [(ngModel)]="inputData.address"
-                                                        name="address"></textarea>
-                                                </fieldset>
-                                            </div>
-                                            <!--  -->
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-2 col-form-label text-md-right"
-                                                for="province">จังหวัด</label>
-                                            <div class="col-4">
-                                                <ng-select [items]="selectprovice" bindLabel="province"
-                                                    placeholder="เลือกจังหวัด" [(ngModel)]="inputData.province"
-                                                    name="province">
-                                                </ng-select>
-                                                <!-- <select class="form-control mb-1" id="province">
-                                                    <option selected>Open this select menu</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select> -->
-                                            </div>
-                                            <!--  -->
-                                            <label class="col-md-2 col-form-label text-md-right"
-                                                for="amphur">อำเภอ</label>
-                                            <div class="col-4">
-                                                <ng-select [items]="selectamphur" bindLabel="amphur"
-                                                    placeholder="เลือกอำเภอ" [(ngModel)]="inputData.amphur"
-                                                    name="amphur">
-                                                </ng-select>
-                                                <!-- <select class="form-control mb-1" id="amphur">
-                                                    <option selected>Open this select menu</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select> -->
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-2 col-form-label text-md-right"
-                                                for="tumbon">ตำบล</label>
-                                            <div class="col-4">
-                                                <ng-select [items]="selecttumbon" bindLabel="tumbon"
-                                                    placeholder="เลือกตำบล" [(ngModel)]="inputData.tumbon"
-                                                    name="tumbon">
-                                                </ng-select>
-                                                <!-- <select class="form-control mb-1" id="tumbon">
-                                                    <option selected>Open this select menu</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select> -->
-                                            </div>
-                                            <!--  -->
-                                            <label class="col-md-2 col-form-label text-md-right"
-                                                for="postcode">รหัสไปรษณีย์</label>
-                                            <div class="col-4">
-                                                <input type="text" id="postcode" class="form-control"
-                                                    placeholder="รหัสไปรษณีย์" name="postcode"
-                                                    [(ngModel)]="inputData.tumbon" />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-2 col-form-label text-md-right"
-                                                for="contactPerson">พนักงงานที่ติดต่อได้</label>
-                                            <div class="col-4">
-                                                <input type="text" id="contactPerson" class="form-control"
-                                                    placeholder="พนักงงานที่ติดต่อได้" name="contactPerson"
-                                                    [(ngModel)]="inputData.contactPerson" />
-                                            </div>
-                                            <!--  -->
-                                            <label class="col-md-2 col-form-label text-md-right"
-                                                for="contactPersonPosition">ตำแหน่ง/ฝ่าย</label>
-                                            <div class="col-4">
-                                                <input type="text" id="contactPersonPosition" class="form-control"
-                                                    placeholder="ตำแหน่ง/ฝ่าย" name="contactPersonPosition"
-                                                    [(ngModel)]="inputData.contactPersonPosition" />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-2 col-form-label text-md-right"
-                                                for="mobilePhone">มือถือ</label>
-                                            <div class="col-4">
-                                                <input type="text" id="mobilePhone" class="form-control"
-                                                    placeholder="มือถือ" name="mobilePhone"
-                                                    [(ngModel)]="inputData.mobilePhone" />
-                                            </div>
-                                            <!--  -->
-                                            <label class="col-md-2 col-form-label text-md-right"
-                                                for="phone">โทรศัทพ์</label>
-                                            <div class="col-4">
-                                                <input type="text" id="phone" class="form-control"
-                                                    placeholder="โทรศัทพ์" name="phone" [(ngModel)]="inputData.phone" />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-2 col-form-label text-md-right" for="fax">Fax</label>
-                                            <div class="col-4">
-                                                <input type="text" id="fax" class="form-control" placeholder="fax"
-                                                    name="fax" [(ngModel)]="inputData.fax" />
-                                            </div>
-                                            <!--  -->
-                                            <label class="col-md-2 col-form-label text-md-right"
-                                                for="email">Email</label>
-                                            <div class="col-4">
-                                                <input type="text" id="email" class="form-control" placeholder="email"
-                                                    name="email" [(ngModel)]="inputData.email" />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-2 col-form-label text-md-right"
-                                                for="paymentType">ประเภทการชำระ</label>
-                                            <div class="col-4">
-                                                <ng-select [items]="selectpaymentType" bindLabel="paymentType"
-                                                    placeholder="เลือกประเภทการชำระ" [(ngModel)]="inputData.paymentType"
-                                                    name="paymentType">
-                                                </ng-select>
-                                                <!-- <select class="form-control mb-1" id="paymentType">
-                                                    <option selected>Open this select menu</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select> -->
-                                            </div>
-                                            <!--  -->
-                                            <label class="col-md-2 col-form-label text-md-right"
-                                                for="paymentCondition">เงื่อนไขการชำระ</label>
-                                            <div class="col-4">
-                                                <input type="text" id="paymentCondition" class="form-control"
-                                                    placeholder="paymentCondition" name="paymentCondition"
-                                                    [(ngModel)]="inputData.paymentCondition" />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-2 col-form-label text-md-right"
-                                                for="deliver">การจัดส่ง</label>
-                                            <div class="col-4">
-                                                <fieldset class="form-group">
-                                                    <textarea class="form-control" id="deliver" rows="2"
-                                                        placeholder="การจัดส่ง" [(ngModel)]="inputData.deliver"
-                                                        name="deliver"></textarea>
+                                                    <textarea class="form-control" id="Deliver" rows="2"
+                                                        placeholder="การจัดส่ง" [(ngModel)]="inputData.Deliver"
+                                                        name="Deliver" formControlName="Deliver"
+                                                       ></textarea>
                                                 </fieldset>
                                             </div>
                                             <!--  -->
                                             <label class="col-md-2 col-form-label text-md-right"
-                                                for="notes">หมายเหตุ</label>
+                                                for="Notes">หมายเหตุ</label>
                                             <div class="col-4">
                                                 <fieldset class="form-group">
-                                                    <textarea class="form-control" id="notes" rows="2"
-                                                        placeholder="หมายเหตุ" [(ngModel)]="inputData.notes"
-                                                        name="notes"></textarea>
+                                                    <textarea class="form-control" id="Notes" rows="2"
+                                                        placeholder="หมายเหตุ" [(ngModel)]="inputData.Notes"
+                                                        name="Notes" formControlName="Notes"></textarea>
+
                                                 </fieldset>
                                             </div>
                                         </div>
@@ -225,10 +266,11 @@
                                             <div class="col-10">
                                                 <div class="form-group">
                                                     <!-- Basic Multi select -->
-                                                    <ng-select [items]="selectGroup" [multiple]="true"
-                                                        [closeOnSelect]="false" [searchable]="false"
-                                                        bindLabel="groupname" placeholder="Select people"
-                                                        [(ngModel)]="inputData.groupMat" name="groupMat">
+                                                    <ng-select id="groupMat" [items]="inputDataMatGroup"
+                                                        [multiple]="true" [closeOnSelect]="false" [searchable]="false"
+                                                        bindLabel="MaterialGroupName" bindValue="MaterialGroupId"
+                                                        placeholder="Select people"
+                                                        [(ngModel)]="inputData.MaterialGroupId" name="groupMat">
                                                     </ng-select>
                                                     <!--/ Basic Multi select -->
                                                 </div>
@@ -240,7 +282,16 @@
                                                     class="btn btn-gradient-success mr-1">
                                                     บันทึก
                                                 </button>
-                                                <button type="reset" rippleEffect class="btn btn-gradient-danger" (click)="toggleSidebar('app-supplier-info')">
+                                                <!-- <swal
+                                                #SweetAlertSuccess
+                                                title="Good job!"
+                                                text="You clicked the button!"
+                                                [swalOptions]="{ confirmButtonClass: 'btn btn-primary' }"
+                                                icon="success"
+                                              >
+                                              </swal> -->
+                                                <button rippleEffect class="btn btn-gradient-danger"
+                                                    (click)="toggleSidebar('app-supplier-info')">
                                                     ยกเลิก
                                                 </button>
                                             </div>

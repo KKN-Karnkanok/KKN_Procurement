@@ -62,7 +62,7 @@ namespace KKN.VP.API.Controllers
         [Authorize]
         public async Task<object> SaveData(JObject data)
         {
-            var materialData = new MaterialData();
+            var materialData = new MaterialDTO();
             materialData.ItemMasterList = data["itemMasterList"].ToObject<List<ItemMasterModel>>();
             materialData.ItemGroupList = data["itemGroupList"].ToObject<List<ItemGroupModel>>();
 

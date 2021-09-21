@@ -7,7 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace KKN
 {
@@ -17,15 +16,39 @@ namespace KKN
         public static T MapToObject<T>(this SqlDataReader reader, IEnumerable<string> readerColumnSchema, IEnumerable<PropertyInfo> objectColumnProp)
         {
             T model = Activator.CreateInstance<T>();
-
-            foreach (var prop in objectColumnProp)
+            try
             {
-                if (readerColumnSchema.Contains(prop.Name))
+                foreach (var prop in objectColumnProp)
                 {
-                    var val = Convert.ChangeType(reader[prop.Name], prop.PropertyType);
-                    prop.SetValue(model, val);
+                    if (readerColumnSchema.Contains(prop.Name))
+                    {
+                        if (!reader.IsDBNull(prop.Name))
+                        {
+                            object val;
+                            if (prop.PropertyType == typeof(DateTime?))
+                            {
+                                val = reader[prop.Name];
+                            }
+                            else
+                            {
+                                val = Convert.ChangeType(reader[prop.Name], prop.PropertyType);
+                            }
+                            //var val = Convert.ChangeType(reader[prop.Name], prop.PropertyType);
+                            prop.SetValue(model, val);
+                        }
+                        else
+                        {
+                            prop.SetValue(model, null);
+                        }
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+
 
             return model;
         }
@@ -72,14 +95,14 @@ namespace KKN
         public static string GetDbConnection(this IConfiguration configuration, string name)
         {
             string path = configuration.GetSection("PathDbConfig").Value;
-            
+
             var appSetting = JsonSerializer.Deserialize<AppSettings>(File.ReadAllText(path));
             return appSetting.ConnectionStrings.GetValueOrDefault(name);
         }
         internal class AppSettings
         {
             public Dictionary<string, string> ConnectionStrings { get; set; }
-        } 
+        }
         #endregion
     }
 }

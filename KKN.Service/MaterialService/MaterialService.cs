@@ -10,9 +10,9 @@ namespace KKN.Service.MaterialService
     public class MaterialService
     {
         #region GetItemMasterList
-        public static async Task<MaterialData> GetItemMasterList(IConfiguration config)
+        public static async Task<MaterialDTO> GetItemMasterList(IConfiguration config)
         {
-            var result = new MaterialData();
+            var result = new MaterialDTO();
 
             try
             {
@@ -32,9 +32,9 @@ namespace KKN.Service.MaterialService
         #endregion
 
         #region GetItemMasterDataTable
-        public static async Task<MaterialData> GetItemMasterDataTable(IConfiguration config)
+        public static async Task<MaterialDTO> GetItemMasterDataTable(IConfiguration config)
         {
-            var result = new MaterialData();
+            var result = new MaterialDTO();
 
             try
             {
@@ -51,7 +51,7 @@ namespace KKN.Service.MaterialService
         #endregion
 
         #region Save
-        public static Task<MaterialData> Save(IConfiguration config)
+        public static Task<MaterialDTO> Save(IConfiguration config)
         {
 
             return null;
@@ -59,9 +59,9 @@ namespace KKN.Service.MaterialService
         #endregion
 
         #region SaveMaterialAcc
-        public static async Task<MaterialData> SaveMaterialAcc(IConfiguration config, MaterialData data)
+        public static async Task<MaterialDTO> SaveMaterialAcc(IConfiguration config, MaterialDTO data)
         {
-            var result = new MaterialData();
+            var result = new MaterialDTO();
             int rowComplete = 0;
 
             try
@@ -88,9 +88,9 @@ namespace KKN.Service.MaterialService
         #endregion
 
         #region DeleteMaterialAcc
-        public static async Task<MaterialData> DeleteMaterialAcc(IConfiguration config, int id)
+        public static async Task<MaterialDTO> DeleteMaterialAcc(IConfiguration config, int id)
         {
-            var result = new MaterialData();
+            var result = new MaterialDTO();
             int rowComplete = 0;
 
             try
